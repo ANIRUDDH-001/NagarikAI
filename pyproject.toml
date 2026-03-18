@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "csihack05-backend"
+version = "0.1.0"
+description = "Backend for CSIHACK05 - Government Schemes Discovery Platform"
+authors = ["CSIHACK05 Team"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.109.0"
+uvicorn = {extras = ["standard"], version = "^0.27.0"}
+langchain = "^0.1.0"
+langgraph = "^0.0.26"
+groq = "^0.4.1"
+supabase = "^2.3.4"
+pydantic = "^2.6.0"
+pydantic-settings = "^2.1.0"
+huggingface-hub = "^0.20.3"
+sentence-transformers = "^2.3.1"
+python-multipart = "^0.0.9"
+httpx = "^0.26.0"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
