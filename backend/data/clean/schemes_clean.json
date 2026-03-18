@@ -1,0 +1,1261 @@
+[
+    {
+        "scheme_name": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
+        "ministry": "Ministry of Agriculture and Farmers Welfare",
+        "state": "national",
+        "category": [
+            "Agriculture",
+            "Financial Assistance"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [
+            "Farmer"
+        ],
+        "marital_status": "any",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Land holding papers",
+            "Bank Account Details"
+        ],
+        "application_url": "https://pmkisan.gov.in/",
+        "official_source_url": "https://pmkisan.gov.in/",
+        "description": "An initiative by the government of India in which all farmers will get up to ₹6,000 per year as minimum income support.",
+        "eligibility_text": "All landholding farmers' families, which have cultivable landholding in their names are eligible. Excludes institutional landholders, farmer families holding constitutional posts, serving or retired officers, professionals (doctors, engineers etc.), and pensioners with monthly pension > ₹10,000.",
+        "benefits_text": "Financial benefit of ₹6,000 per year per family, payable in three equal installments of ₹2,000 each, every four months.",
+        "application_process_text": "Farmers can apply online via the PM-KISAN portal or through common service centers (CSCs) and local patwaris/revenue officials.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Pradhan Mantri Kisan Samman Nidhi",
+            "ministry": "Ministry of Agriculture and Farmers Welfare",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "farmer",
+                "self_employed"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Land holding papers",
+                "Bank Account Details"
+            ],
+            "benefits_summary": "The scheme provides a financial benefit of ₹6,000 per year per family.",
+            "eligibility_summary": "All landholding farmers' families with cultivable landholding in their names are eligible.",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "Some information not explicitly stated, assumed based on context."
+        }
+    },
+    {
+        "scheme_name": "Pradhan Mantri Awaas Yojana - Gramin (PMAY-G)",
+        "ministry": "Ministry of Rural Development",
+        "state": "national",
+        "category": [
+            "Housing"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [],
+        "marital_status": "any",
+        "bpl_required": true,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Job Card under MGNREGA",
+            "Bank Account Details",
+            "Swachh Bharat Mission Number"
+        ],
+        "application_url": "https://pmayg.nic.in/",
+        "official_source_url": "https://pmayg.nic.in/",
+        "description": "A rural housing program providing a pucca house with basic amenities to all houseless families and those living in kutcha and dilapidated houses.",
+        "eligibility_text": "Identified strictly based on housing deprivation parameters in the SECC 2011 data, subject to exclusion criteria. Must not own a pucca house in the country.",
+        "benefits_text": "Financial assistance of ₹1.20 Lakh in plains and ₹1.30 Lakh in hilly, difficult areas, and IAP districts. Additionally, 90-95 days of unskilled labor wage under MGNREGA and ₹12,000 for toilet construction.",
+        "application_process_text": "Beneficiaries are automatically selected based on SECC 2011 data. Gram Sabhas verify the list.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Pradhan Mantri Awaas Yojana - Gramin",
+            "ministry": "Ministry of Rural Development",
+            "category": [
+                "EWS",
+                "All"
+            ],
+            "gender": "all",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Job Card under MGNREGA",
+                "Bank Account Details",
+                "Swachh Bharat Mission Number"
+            ],
+            "benefits_summary": "Financial assistance for a pucca house and additional benefits like unskilled labor wages and toilet construction aid",
+            "eligibility_summary": "Houseless families and those living in kutcha and dilapidated houses identified through SECC 2011 data",
+            "application_steps": [],
+            "data_quality_score": 70,
+            "quality_notes": "Some information inferred or not explicitly stated"
+        }
+    },
+    {
+        "scheme_name": "Pradhan Mantri Awas Yojana - Urban (PMAY-U)",
+        "ministry": "Ministry of Housing and Urban Affairs",
+        "state": "national",
+        "category": [
+            "Housing"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": null,
+        "income_limit": 1800000,
+        "occupation": [],
+        "marital_status": "any",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Income Proof",
+            "Bank Account Details",
+            "Property Documents (if applicable)"
+        ],
+        "application_url": "https://pmaymis.gov.in/",
+        "official_source_url": "https://pmaymis.gov.in/",
+        "description": "To address the housing shortage among the urban poor including the EWS/LIG/MIG categories by ensuring a pucca house to all eligible urban households.",
+        "eligibility_text": "Applicant must not own a pucca house anywhere in India. Income categories: EWS (Up to ₹3 Lakh/yr), LIG (₹3-6 Lakh/yr), MIG-I (₹6-12 Lakh/yr), MIG-II (₹12-18 Lakh/yr).",
+        "benefits_text": "Credit Linked Subsidy up to ₹2.67 Lakhs on home loans, or assistance for construction/enhancement of houses.",
+        "application_process_text": "Can apply online through the PMAY(U) MIS portal or via Common Service Centres (CSCs). Registration via banks for Credit Linked Subsidy Scheme (CLSS).",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Pradhan Mantri Awas Yojana - Urban",
+            "ministry": "Ministry of Housing and Urban Affairs",
+            "category": [
+                "EWS",
+                "LIG",
+                "MIG",
+                "General"
+            ],
+            "gender": "all",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": {
+                "EWS": 300000,
+                "LIG": 600000,
+                "MIG-I": 1200000,
+                "MIG-II": 1800000
+            },
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Income Proof",
+                "Bank Account Details",
+                "Property Documents"
+            ],
+            "benefits_summary": "Credit Linked Subsidy up to ₹2.67 Lakhs on home loans for eligible households.",
+            "eligibility_summary": "Urban households not owning a pucca house, belonging to EWS/LIG/MIG categories.",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "Income ranges for MIG categories are composite."
+        }
+    },
+    {
+        "scheme_name": "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (PM-JAY)",
+        "ministry": "Ministry of Health and Family Welfare",
+        "state": "national",
+        "category": [
+            "Health",
+            "Insurance"
+        ],
+        "gender": "any",
+        "age_min": null,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [],
+        "marital_status": "any",
+        "bpl_required": true,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Ration Card",
+            "PMJAY E-Card / Golden Card"
+        ],
+        "application_url": "https://pmjay.gov.in/",
+        "official_source_url": "https://pmjay.gov.in/",
+        "description": "World's largest health insurance scheme fully financed by the government, providing a cover of ₹5 lakhs per family per year for secondary and tertiary care hospitalization.",
+        "eligibility_text": "Families identified based on the deprivation and occupational criteria of the Socio-Economic Caste Census 2011 (SECC 2011) for rural and urban areas respectively.",
+        "benefits_text": "Health cover of ₹5 lakhs per family per year for secondary and tertiary care hospitalization across public and private empanelled hospitals in India. Cashless and paperless access.",
+        "application_process_text": "No formal enrollment process needed. Eligible families receive a health card automatically or can generate it at empanelled hospitals/CSCs by verifying their identity.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana",
+            "ministry": "Ministry of Health and Family Welfare",
+            "category": [
+                "EWS",
+                "All"
+            ],
+            "gender": "all",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Ration Card",
+                "PMJAY E-Card / Golden Card"
+            ],
+            "benefits_summary": "Health cover of ₹5 lakhs per family per year for secondary and tertiary care hospitalization across public and private empanelled hospitals in India.",
+            "eligibility_summary": "Families identified based on the deprivation and occupational criteria of the Socio-Economic Caste Census 2011 (SECC 2011) for rural and urban areas respectively.",
+            "application_steps": [],
+            "data_quality_score": 70,
+            "quality_notes": "Some information not explicitly stated in the provided text."
+        }
+    },
+    {
+        "scheme_name": "Pradhan Mantri Ujjwala Yojana (PMUY) 2.0",
+        "ministry": "Ministry of Petroleum and Natural Gas",
+        "state": "national",
+        "category": [
+            "Energy",
+            "Women Empowerment"
+        ],
+        "gender": "female",
+        "age_min": 18,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [],
+        "marital_status": "any",
+        "bpl_required": true,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Ration Card",
+            "Bank Account Details",
+            "Passport Size Photo"
+        ],
+        "application_url": "https://www.pmuy.gov.in/",
+        "official_source_url": "https://www.pmuy.gov.in/",
+        "description": "Provides deposit-free LPG connections to women from below poverty line (BPL) households to ensure smokeless kitchens.",
+        "eligibility_text": "Adult woman belonging to a poor household not possessing an LPG connection. Covers SC/ST, PMAY-G, AAY, SECC households, etc.",
+        "benefits_text": "Deposit-free LPG connection including free first refill and hotplate (stove). Financial support of ₹1600 for a 14.2 kg cylinder.",
+        "application_process_text": "Apply online at pmuy.gov.in or submit an application physically at the nearest LPG distributorship.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Pradhan Mantri Ujjwala Yojana 2.0",
+            "ministry": "Ministry of Petroleum and Natural Gas",
+            "category": [
+                "EWS",
+                "All"
+            ],
+            "gender": "female",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": true,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Ration Card",
+                "Bank Account Details",
+                "Passport Size Photo"
+            ],
+            "benefits_summary": "Deposit-free LPG connection including free first refill and hotplate (stove) with financial support of ₹1600 for a 14.2 kg cylinder.",
+            "eligibility_summary": "Adult woman from a below poverty line (BPL) household without an existing LPG connection.",
+            "application_steps": [],
+            "data_quality_score": 70,
+            "quality_notes": "Some details like application steps and exact ministry name could not be confirmed."
+        }
+    },
+    {
+        "scheme_name": "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
+        "ministry": "Ministry of Finance",
+        "state": "national",
+        "category": [
+            "Financial Inclusion",
+            "Banking"
+        ],
+        "gender": "any",
+        "age_min": 10,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [],
+        "marital_status": "any",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card or other OVD (Officially Valid Document)"
+        ],
+        "application_url": "https://pmjdy.gov.in/",
+        "official_source_url": "https://pmjdy.gov.in/",
+        "description": "National Mission for Financial Inclusion to ensure access to financial services, namely, basic savings & deposit accounts, remittance, credit, insurance, pension in an affordable manner.",
+        "eligibility_text": "Any Indian citizen over 10 years of age who does not have any other bank account.",
+        "benefits_text": "Zero-balance Savings Account, RuPay Debit card with ₹2 lakh accident insurance cover, and an overdraft facility of up to ₹10,000 for eligible account holders.",
+        "application_process_text": "Visit any bank branch or Bank Mitra (Business Correspondent) outlet to open an account by submitting the required KYC documents.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Pradhan Mantri Jan Dhan Yojana",
+            "ministry": "Ministry of Finance",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": 10,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Other OVD"
+            ],
+            "benefits_summary": "Zero-balance Savings Account with RuPay Debit card and accident insurance",
+            "eligibility_summary": "Any Indian citizen over 10 years with no existing bank account",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "Limited information on application process"
+        }
+    },
+    {
+        "scheme_name": "Indira Gandhi National Old Age Pension Scheme (IGNOAPS) - NSAP",
+        "ministry": "Ministry of Rural Development",
+        "state": "national",
+        "category": [
+            "Pension",
+            "Social Security",
+            "Senior Citizen"
+        ],
+        "gender": "any",
+        "age_min": 60,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [],
+        "marital_status": "any",
+        "bpl_required": true,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Age Proof",
+            "BPL Ration Card",
+            "Bank Account Details"
+        ],
+        "application_url": "https://nsap.nic.in/",
+        "official_source_url": "https://nsap.nic.in/",
+        "description": "A non-contributory old age pension scheme for the BPL elderly.",
+        "eligibility_text": "Must be 60 years or older and belong to a household below the poverty line (BPL) according to criteria prescribed by the Government of India.",
+        "benefits_text": "Pension of ₹200 per month for ages 60-79, and ₹500 per month for those aged 80 and above. States usually add their own contribution.",
+        "application_process_text": "Applications are submitted to the Gram Panchayat / Municipal officials, accompanied by BPL verification.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Indira Gandhi National Old Age Pension Scheme",
+            "ministry": "Ministry of Rural Development",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": 60,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": true,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Age Proof",
+                "BPL Ration Card",
+                "Bank Account Details"
+            ],
+            "benefits_summary": "Pension of ₹200-500 per month based on age",
+            "eligibility_summary": "Citizens 60 years or older from Below Poverty Line (BPL) households",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "State contributions to pension not detailed"
+        }
+    },
+    {
+        "scheme_name": "Indira Gandhi National Widow Pension Scheme (IGNWPS) - NSAP",
+        "ministry": "Ministry of Rural Development",
+        "state": "national",
+        "category": [
+            "Pension",
+            "Social Security",
+            "Women"
+        ],
+        "gender": "female",
+        "age_min": 40,
+        "age_max": 79,
+        "income_limit": null,
+        "occupation": [],
+        "marital_status": "widowed",
+        "bpl_required": true,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Husband's Death Certificate",
+            "Age Proof",
+            "BPL Ration Card",
+            "Bank Account Details"
+        ],
+        "application_url": "https://nsap.nic.in/",
+        "official_source_url": "https://nsap.nic.in/",
+        "description": "A non-contributory widow pension scheme for BPL widows.",
+        "eligibility_text": "Widows aged 40 to 79 years belonging to BPL households.",
+        "benefits_text": "Pension of ₹300 per month. After age 80, they transition to IGNOAPS to receive ₹500 per month.",
+        "application_process_text": "Apply via Gram Panchayat / Municipal bodies with husband's death certificate and BPL verification.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Indira Gandhi National Widow Pension Scheme",
+            "ministry": "Ministry of Rural Development",
+            "category": [
+                "All"
+            ],
+            "gender": "female",
+            "age_min": 40,
+            "age_max": 79,
+            "income_limit_annual": null,
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": true,
+            "disability_required": false,
+            "marital_status": "widow",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Husband's Death Certificate",
+                "Age Proof",
+                "BPL Ration Card",
+                "Bank Account Details"
+            ],
+            "benefits_summary": "A monthly pension of ₹300 for widows below 80 years and ₹500 for those above 80 years",
+            "eligibility_summary": "Widows aged 40-79 years from BPL households are eligible",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "Benefit amount changes at age 80, unclear if application steps are publicly available"
+        }
+    },
+    {
+        "scheme_name": "Indira Gandhi National Disability Pension Scheme (IGNDPS) - NSAP",
+        "ministry": "Ministry of Rural Development",
+        "state": "national",
+        "category": [
+            "Pension",
+            "Social Security",
+            "Disability"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": 79,
+        "income_limit": null,
+        "occupation": [],
+        "marital_status": "any",
+        "bpl_required": true,
+        "disability_required": true,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Severe Disability Certificate (>= 80%)",
+            "Age Proof",
+            "BPL Card",
+            "Bank Account Details"
+        ],
+        "application_url": "https://nsap.nic.in/",
+        "official_source_url": "https://nsap.nic.in/",
+        "description": "Pension for persons with severe or multiple disabilities from BPL families.",
+        "eligibility_text": "Must be aged 18-79 years, belong to a BPL family, and have severe or multiple disabilities (80% and above).",
+        "benefits_text": "Pension of ₹300 per month. After age 80, transition to IGNOAPS for ₹500 per month.",
+        "application_process_text": "Apply locally with a certified disability certificate.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Indira Gandhi National Disability Pension Scheme (IGNDPS) - NSAP",
+            "ministry": "Ministry of Social Justice and Empowerment",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": 18,
+            "age_max": 79,
+            "income_limit_annual": null,
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": true,
+            "disability_required": true,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Severe Disability Certificate",
+                "Age Proof",
+                "BPL Card",
+                "Bank Account Details"
+            ],
+            "benefits_summary": "A monthly pension of ₹300 for persons with severe or multiple disabilities from BPL families, transitioning to ₹500 per month after age 80.",
+            "eligibility_summary": "Persons aged 18-79 years with severe or multiple disabilities (80% and above) from BPL families are eligible.",
+            "application_steps": [],
+            "data_quality_score": 90,
+            "quality_notes": ""
+        }
+    },
+    {
+        "scheme_name": "National Family Benefit Scheme (NFBS) - NSAP",
+        "ministry": "Ministry of Rural Development",
+        "state": "national",
+        "category": [
+            "Financial Assistance",
+            "Social Security"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": 59,
+        "income_limit": null,
+        "occupation": [],
+        "marital_status": "any",
+        "bpl_required": true,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Death Certificate of Breadwinner",
+            "BPL Proof"
+        ],
+        "application_url": "https://nsap.nic.in/",
+        "official_source_url": "https://nsap.nic.in/",
+        "description": "Lump sum assistance on the death of a primary breadwinner in a BPL family.",
+        "eligibility_text": "A BPL household where the primary breadwinner (aged 18-59) has died.",
+        "benefits_text": "One-time lump sum assistance of ₹20,000 to the bereaved household.",
+        "application_process_text": "Submit application to local administration (Tehsildar / BDO) soon after the death.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "National Family Benefit Scheme (NFBS) - NSAP",
+            "ministry": "Ministry of Rural Development",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": 18,
+            "age_max": 59,
+            "income_limit_annual": null,
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": true,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Death Certificate",
+                "BPL Proof"
+            ],
+            "benefits_summary": "A lump sum assistance of ₹20,000 is provided to the bereaved household.",
+            "eligibility_summary": "A BPL household with a primary breadwinner aged 18-59 who has died is eligible.",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "No application steps provided."
+        }
+    },
+    {
+        "scheme_name": "Annapurna Scheme - NSAP",
+        "ministry": "Ministry of Rural Development",
+        "state": "national",
+        "category": [
+            "Food Security",
+            "Senior Citizen"
+        ],
+        "gender": "any",
+        "age_min": 65,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [],
+        "marital_status": "any",
+        "bpl_required": true,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar",
+            "Age Proof",
+            "BPL Proof",
+            "Non-receipt of pension declaration"
+        ],
+        "application_url": "https://nsap.nic.in/",
+        "official_source_url": "https://nsap.nic.in/",
+        "description": "Provides food security to meet the requirement of those senior citizens who, though eligible, have remained uncovered under IGNOAPS.",
+        "eligibility_text": "Age 65+ years, destitute, must be eligible for IGNOAPS but practically NOT receiving any pension.",
+        "benefits_text": "10 Kgs of food grains (wheat or rice) given free of cost per month per beneficiary.",
+        "application_process_text": "Apply to local Gram Panchayat / Municipal Authorities with declaration of zero pension.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Annapurna Scheme",
+            "ministry": "Ministry of Rural Development",
+            "category": [
+                "General",
+                "EWS",
+                "All"
+            ],
+            "gender": "all",
+            "age_min": 65,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": true,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar",
+                "Age Proof",
+                "BPL Proof",
+                "Non-receipt of pension declaration"
+            ],
+            "benefits_summary": "10 Kgs of food grains given free of cost per month per beneficiary",
+            "eligibility_summary": "Senior citizens aged 65+ years, destitute, eligible for IGNOAPS but not receiving pension",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "Some information inferred, limited details on application process"
+        }
+    },
+    {
+        "scheme_name": "Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)",
+        "ministry": "Ministry of Rural Development",
+        "state": "national",
+        "category": [
+            "Employment",
+            "Rural Development"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [
+            "Unskilled Labourer"
+        ],
+        "marital_status": "any",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Bank Account Details",
+            "Passport Size Photo"
+        ],
+        "application_url": "https://nrega.nic.in/",
+        "official_source_url": "https://nrega.nic.in/",
+        "description": "Enhances livelihood security in rural areas by providing at least 100 days of guaranteed wage employment in a financial year to every household whose adult members volunteer to do unskilled manual work.",
+        "eligibility_text": "Any Indian citizen above 18 years living in a rural area and willing to do unskilled manual work.",
+        "benefits_text": "Guaranteed 100 days of employment in a year. Provision of minimum wages set by the state. Unemployment allowance if work is not provided within 15 days.",
+        "application_process_text": "Register at the local Gram Panchayat to obtain a 'Job Card' by applying orally or in writing.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Mahatma Gandhi National Rural Employment Guarantee Act",
+            "ministry": "Ministry of Rural Development",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": 18,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "unemployed",
+                "any"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Bank Account Details",
+                "Passport Size Photo"
+            ],
+            "benefits_summary": "100 days of guaranteed wage employment in a year with minimum wages",
+            "eligibility_summary": "Any Indian citizen above 18 years living in a rural area willing to do unskilled manual work",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "Some information inferred, detailed application steps not provided"
+        }
+    },
+    {
+        "scheme_name": "Pradhan Mantri Kisan Maan-Dhan Yojana (PM-KMY)",
+        "ministry": "Ministry of Agriculture and Farmers Welfare",
+        "state": "national",
+        "category": [
+            "Pension",
+            "Agriculture"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": 40,
+        "income_limit": null,
+        "occupation": [
+            "Farmer"
+        ],
+        "marital_status": "any",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Savings Bank Account / PM-KISAN a/c"
+        ],
+        "application_url": "https://maandhan.in/",
+        "official_source_url": "https://maandhan.in/",
+        "description": "A voluntary and contributory pension scheme for Small and Marginal Farmers (SMF) to provide a social security net as they grow old.",
+        "eligibility_text": "Small and Marginal Farmers holding cultivable land up to 2 hectares. Entry age between 18 to 40 years. Must not be covered under other statutory social security schemes like NPS, ESIC, EPFO etc.",
+        "benefits_text": "Assured monthly pension of ₹3,000 upon attaining the age of 60 years. In case of death, the spouse receives 50% as family pension.",
+        "application_process_text": "Apply via Common Service Centres (CSCs) or self-enrollment on the maandhan.in portal. Contributions range from ₹55 to ₹200 per month.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Pradhan Mantri Kisan Maan-Dhan Yojana",
+            "ministry": "Ministry of Agriculture and Farmers Welfare",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": 18,
+            "age_max": 40,
+            "income_limit_annual": null,
+            "occupation": [
+                "farmer"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Savings Bank Account"
+            ],
+            "benefits_summary": "Assured monthly pension of ₹3,000 upon attaining the age of 60 years",
+            "eligibility_summary": "Small and Marginal Farmers holding cultivable land up to 2 hectares, aged 18-40, not covered under other statutory social security schemes",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "Land holding limit (2 hectares) and other scheme exclusion details not quantified"
+        }
+    },
+    {
+        "scheme_name": "PM Street Vendor's AtmaNirbhar Nidhi (PM SVANidhi)",
+        "ministry": "Ministry of Housing and Urban Affairs",
+        "state": "national",
+        "category": [
+            "Business Loan",
+            "Urban Development"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [
+            "Street Vendor"
+        ],
+        "marital_status": "any",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar Card",
+            "Vending Certificate (CoV)/Identity Card from ULB",
+            "Bank Account Details"
+        ],
+        "application_url": "https://pmsvanidhi.mohua.gov.in/",
+        "official_source_url": "https://pmsvanidhi.mohua.gov.in/",
+        "description": "A special micro-credit facility to provide affordable loans to street vendors to resume their livelihoods.",
+        "eligibility_text": "Street vendors engaged in vending in urban areas as on or before March 24, 2020. Having Certificate of Vending / Identity Card issued by Urban Local Bodies.",
+        "benefits_text": "Working capital loan up to ₹10,000 initially. Enhanced limit of ₹20,000 and ₹50,000 on timely repayment of earlier loans. 7% interest subsidy on prompt repayment.",
+        "application_process_text": "Apply online via the PM SVANidhi portal or visit a nearby banking agent / CSC center.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "PM Street Vendor's AtmaNirbhar Nidhi",
+            "ministry": "Ministry of Housing and Urban Affairs",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "self_employed"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar Card",
+                "Vending Certificate/Identity Card",
+                "Bank Account Details"
+            ],
+            "benefits_summary": "A working capital loan of up to ₹10,000, with enhanced limits and 7% interest subsidy on prompt repayment.",
+            "eligibility_summary": "Street vendors engaged in vending in urban areas as on or before March 24, 2020, with a Certificate of Vending/Identity Card issued by Urban Local Bodies.",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "Some details like application steps and exact ministry's role require further verification."
+        }
+    },
+    {
+        "scheme_name": "Pradhan Mantri MUDRA Yojana (PMMY) - Shishu",
+        "ministry": "Ministry of Finance",
+        "state": "national",
+        "category": [
+            "Business Loan",
+            "Entrepreneurship"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [
+            "Entrepreneur",
+            "Small Business Owner"
+        ],
+        "marital_status": "any",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar",
+            "Pan Card",
+            "Business Proof / Quotation for machinery"
+        ],
+        "application_url": "https://www.mudra.org.in/",
+        "official_source_url": "https://www.mudra.org.in/",
+        "description": "Micro Units Development and Refinance Agency Ltd. [MUDRA] scheme to provide loans up to 10 lakhs to non-corporate, non-farm small/micro enterprises. 'Shishu' covers loans up to ₹50,000.",
+        "eligibility_text": "Any Indian citizen who has a valid business plan for a non-farm sector income generating activity. Specifically targeting startups and first-time entrepreneurs.",
+        "benefits_text": "Collateral-free loan up to ₹50,000 to start or expand a micro business.",
+        "application_process_text": "Apply directly at authorized banks, NBFCs, MFIs, or online through the Udyamimitra portal.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Pradhan Mantri MUDRA Yojana - Shishu",
+            "ministry": "Ministry of Finance",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "self_employed",
+                "unemployed",
+                "any"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar",
+                "Pan Card",
+                "Business Proof"
+            ],
+            "benefits_summary": "Collateral-free loan up to ₹50,000 to start or expand a micro business.",
+            "eligibility_summary": "Any Indian citizen with a valid business plan for a non-farm sector income generating activity.",
+            "application_steps": [],
+            "data_quality_score": 70,
+            "quality_notes": "Some details like application steps are not provided."
+        }
+    },
+    {
+        "scheme_name": "Pradhan Mantri MUDRA Yojana (PMMY) - Kishore",
+        "ministry": "Ministry of Finance",
+        "state": "national",
+        "category": [
+            "Business Loan",
+            "Entrepreneurship"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [
+            "Entrepreneur",
+            "Small Business Owner"
+        ],
+        "marital_status": "any",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar",
+            "Pan Card",
+            "Business Proof",
+            "Income Tax Returns / Bank Statements"
+        ],
+        "application_url": "https://www.mudra.org.in/",
+        "official_source_url": "https://www.mudra.org.in/",
+        "description": "MUDRA loan 'Kishore' covers loans above ₹50,000 and up to ₹5 Lakh.",
+        "eligibility_text": "For entrepreneurs who have started a business and are looking to expand it.",
+        "benefits_text": "Collateral-free loan from ₹50,001 to ₹5,00,000 for business expansion.",
+        "application_process_text": "Apply through lending institutions (banks, NBFCs) or the Udyamimitra portal.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Pradhan Mantri MUDRA Yojana - Kishore",
+            "ministry": "Ministry of Finance",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "self_employed",
+                "entrepreneur"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar",
+                "Pan Card",
+                "Business Proof",
+                "Income Tax Returns",
+                "Bank Statements"
+            ],
+            "benefits_summary": "Collateral-free loan from ₹50,001 to ₹5,00,000 for business expansion.",
+            "eligibility_summary": "For entrepreneurs who have started a business and are looking to expand it.",
+            "application_steps": [],
+            "data_quality_score": 70,
+            "quality_notes": "Some fields like income limit, age range and application steps are not specified."
+        }
+    },
+    {
+        "scheme_name": "Pradhan Mantri MUDRA Yojana (PMMY) - Tarun",
+        "ministry": "Ministry of Finance",
+        "state": "national",
+        "category": [
+            "Business Loan",
+            "Entrepreneurship"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [
+            "Entrepreneur",
+            "Small Business Owner"
+        ],
+        "marital_status": "any",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar",
+            "Pan Card",
+            "Business Proof",
+            "ITR/Audited Balance Sheets"
+        ],
+        "application_url": "https://www.mudra.org.in/",
+        "official_source_url": "https://www.mudra.org.in/",
+        "description": "MUDRA loan 'Tarun' covers loans above ₹5 Lakh and up to ₹10 Lakh.",
+        "eligibility_text": "Established businesses that need substantial working capital or fixed asset funding to grow.",
+        "benefits_text": "Collateral-free loan from ₹5,00,001 to ₹10,00,000.",
+        "application_process_text": "Submit a detailed project report and application to lending institutions like commercial banks.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Pradhan Mantri MUDRA Yojana - Tarun",
+            "ministry": "Ministry of Finance",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "self_employed",
+                "established business"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar",
+                "Pan Card",
+                "Business Proof",
+                "ITR/Audited Balance Sheets"
+            ],
+            "benefits_summary": "Collateral-free loan from ₹5,00,001 to ₹10,00,000.",
+            "eligibility_summary": "Established businesses that need substantial working capital or fixed asset funding to grow.",
+            "application_steps": [],
+            "data_quality_score": 70,
+            "quality_notes": "Insufficient information on application steps and specific eligibility criteria."
+        }
+    },
+    {
+        "scheme_name": "Sukanya Samriddhi Yojana (SSY)",
+        "ministry": "Ministry of Finance",
+        "state": "national",
+        "category": [
+            "Savings",
+            "Girl Child",
+            "Women Empowerment"
+        ],
+        "gender": "female",
+        "age_min": 0,
+        "age_max": 10,
+        "income_limit": null,
+        "occupation": [],
+        "marital_status": "single",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Birth Certificate of Girl Child",
+            "Identity and Address proof of guardian/parent"
+        ],
+        "application_url": "https://www.indiapost.gov.in/",
+        "official_source_url": "https://www.nsiindia.gov.in/",
+        "description": "A Govt of India backed savings scheme targeted at the parents of girl children, under 'Beti Bachao, Beti Padhao' campaign.",
+        "eligibility_text": "The account can be opened in the name of a girl child anytime before she attains the age of 10 years. Max 2 accounts per family (3 in case of twins).",
+        "benefits_text": "Highly attractive interest rate (currently approx 8.2%), tax benefits under 80C, maturity after 21 years or marriage of the girl after 18.",
+        "application_process_text": "Visit any Post office or authorized commercial banks to open the account with a minimum deposit of ₹250.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Sukanya Samriddhi Yojana",
+            "ministry": "Ministry of Women and Child Development",
+            "category": [
+                "All"
+            ],
+            "gender": "female",
+            "age_min": 0,
+            "age_max": 10,
+            "income_limit_annual": null,
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Birth Certificate of Girl Child",
+                "Identity and Address proof of guardian/parent"
+            ],
+            "benefits_summary": "Highly attractive interest rate, tax benefits, and maturity after 21 years or marriage of the girl after 18.",
+            "eligibility_summary": "Parents of girl children below 10 years can open an account.",
+            "application_steps": [
+                "Open account in the name of the girl child",
+                "Provide required documents"
+            ],
+            "data_quality_score": 90,
+            "quality_notes": "Some details like application steps are not explicitly mentioned."
+        }
+    },
+    {
+        "scheme_name": "Kisan Credit Card (KCC) Scheme",
+        "ministry": "Ministry of Finance / Ministry of Agriculture",
+        "state": "national",
+        "category": [
+            "Agriculture",
+            "Credit"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": 75,
+        "income_limit": null,
+        "occupation": [
+            "Farmer",
+            "Animal Husbandry",
+            "Fisheries"
+        ],
+        "marital_status": "any",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar",
+            "Land Ownership Proof / Lease details",
+            "Passport Size Photo"
+        ],
+        "application_url": "https://pmkisan.gov.in/",
+        "official_source_url": "https://sbi.co.in/web/agri-rural/agriculture-banking/crop-loan/kisan-credit-card",
+        "description": "Provides adequate and timely credit support from the banking system to farmers for their cultivation and agriculture-related needs.",
+        "eligibility_text": "All farmers - individuals/joint borrowers who are owner cultivators, tenant farmers, Oral lessees & Sharecroppers, SHGs or Joint Liability Groups of farmers.",
+        "benefits_text": "Credit limit to meet agricultural expenses, post-harvest expenses, etc., at concessional interest rates (approx 4% with subvention). Also covers animal husbandry and fisheries.",
+        "application_process_text": "Apply directly at any commercial bank, Regional Rural Bank or Cooperative Bank.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Kisan Credit Card Scheme",
+            "ministry": "Ministry of Agriculture and Farmers Welfare",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "farmer"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar",
+                "Land Ownership Proof / Lease details",
+                "Passport Size Photo"
+            ],
+            "benefits_summary": "Credit limit to meet agricultural expenses at concessional interest rates",
+            "eligibility_summary": "All farmers, including individuals, joint borrowers, SHGs, and Joint Liability Groups",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "Some details like interest rate and specific benefits are not quantified"
+        }
+    },
+    {
+        "scheme_name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+        "ministry": "Ministry of Agriculture and Farmers Welfare",
+        "state": "national",
+        "category": [
+            "Agriculture",
+            "Insurance"
+        ],
+        "gender": "any",
+        "age_min": 18,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [
+            "Farmer"
+        ],
+        "marital_status": "any",
+        "bpl_required": false,
+        "disability_required": false,
+        "documents_needed": [
+            "Aadhaar",
+            "Land Records (Khatauni/Khasra)",
+            "Bank Account Details",
+            "Sown Crop details"
+        ],
+        "application_url": "https://pmfby.gov.in/",
+        "official_source_url": "https://pmfby.gov.in/",
+        "description": "Comprehensive crop insurance scheme protecting farmers against unforeseen events affecting crop yields.",
+        "eligibility_text": "All farmers growing notified crops in a notified area during the season who have an insurable interest in the crop.",
+        "benefits_text": "Very low premium paid by farmers (2% for Kharif, 1.5% for Rabi, 5% for commercial/horticulture). Financial support in case of crop failure due to natural calamities.",
+        "application_process_text": "Registration via banks, common service centers (CSCs), or the PMFBY online portal before the specified cutoff dates for the season.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Pradhan Mantri Fasal Bima Yojana",
+            "ministry": "Ministry of Agriculture and Farmers Welfare",
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "farmer"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Aadhaar",
+                "Land Records",
+                "Bank Account Details",
+                "Sown Crop details"
+            ],
+            "benefits_summary": "Financial support in case of crop failure due to natural calamities with very low premium",
+            "eligibility_summary": "All farmers growing notified crops in a notified area during the season",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "Insufficient information on application steps and premium calculation"
+        }
+    },
+    {
+        "scheme_name": "Pradhan Mantri Garib Kalyan Anna Yojana (PMGKAY)",
+        "ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+        "state": "national",
+        "category": [
+            "Food Security"
+        ],
+        "gender": "any",
+        "age_min": null,
+        "age_max": null,
+        "income_limit": null,
+        "occupation": [],
+        "marital_status": "any",
+        "bpl_required": true,
+        "disability_required": false,
+        "documents_needed": [
+            "Ration Card (AAY or PHH)",
+            "Aadhaar Card"
+        ],
+        "application_url": "https://dfpd.gov.in/",
+        "official_source_url": "https://dfpd.gov.in/",
+        "description": "A food security welfare scheme aimed at feeding the poorest citizens of India by providing free food grains.",
+        "eligibility_text": "Families holding Antyodaya Anna Yojana (AAY) and Priority Household (PHH) ration cards under the National Food Security Act (NFSA).",
+        "benefits_text": "Free extra 5 kg of food grains (rice or wheat) per month per person, in addition to the monthly subsidized entitlements under NFSA.",
+        "application_process_text": "Automatically provided to eligible ration card holders at the Fair Price Shops (FPS) using POS machines.",
+        "tier": 1,
+        "_source_file": "tier1_seed.json",
+        "structured_data": {
+            "scheme_name_clean": "Pradhan Mantri Garib Kalyan Anna Yojana",
+            "ministry": null,
+            "category": [
+                "All"
+            ],
+            "gender": "all",
+            "age_min": null,
+            "age_max": null,
+            "income_limit_annual": null,
+            "occupation": [
+                "any"
+            ],
+            "bpl_required": false,
+            "disability_required": false,
+            "marital_status": "any",
+            "documents_needed": [
+                "Ration Card",
+                "Aadhaar Card"
+            ],
+            "benefits_summary": "Free extra 5 kg of food grains per month per person",
+            "eligibility_summary": "Families with Antyodaya Anna Yojana or Priority Household ration cards",
+            "application_steps": [],
+            "data_quality_score": 80,
+            "quality_notes": "No clear ministry name or application steps found"
+        }
+    }
+]
