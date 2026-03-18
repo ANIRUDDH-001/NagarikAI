@@ -1,0 +1,11 @@
+[
+    {
+        "scheme_id": "tamil_nadu_manual_1",
+        "scheme_name": "Example Tamil_nadu Welfare Scheme Base",
+        "state": "tamil_nadu",
+        "eligibility_criteria": "Enter eligibility here: Requires detailed text > 30 chars for validation.",
+        "benefits_description": "Enter benefits here: Requires detailed text > 50 chars for validation.",
+        "documents_required": "Provide document 1, Document 2.",
+        "official_application_url": "http://example.in/apply"
+    }
+]

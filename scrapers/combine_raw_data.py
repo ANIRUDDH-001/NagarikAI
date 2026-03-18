@@ -1,0 +1,8 @@
+import subprocess
+import sys
+
+def main():
+    subprocess.run([sys.executable, "backend/scrapers/combine_raw_data.py"] + sys.argv[1:])
+
+if __name__ == "__main__":
+    main()

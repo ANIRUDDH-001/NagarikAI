@@ -1,0 +1,29 @@
+[
+    {
+        "scheme_id": "bihar_0",
+        "scheme_name": "ऑनलाइन आवेदन",
+        "state": "bihar",
+        "eligibility_criteria": "TBD",
+        "benefits_description": "TBD",
+        "documents_required": "TBD",
+        "official_application_url": "#"
+    },
+    {
+        "scheme_id": "bihar_1",
+        "scheme_name": "लोक सेवाएँ",
+        "state": "bihar",
+        "eligibility_criteria": "TBD",
+        "benefits_description": "TBD",
+        "documents_required": "TBD",
+        "official_application_url": "#"
+    },
+    {
+        "scheme_id": "bihar_2",
+        "scheme_name": "सामान्य प्रशासन विभाग",
+        "state": "bihar",
+        "eligibility_criteria": "TBD",
+        "benefits_description": "TBD",
+        "documents_required": "TBD",
+        "official_application_url": "#"
+    }
+]
