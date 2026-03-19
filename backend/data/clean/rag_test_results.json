@@ -1,0 +1,59 @@
+{
+  "score": "13/15",
+  "passed": 13,
+  "total": 15,
+  "failures": [
+    {
+      "id": 2,
+      "expected": [
+        "Scholarship",
+        "Shiksha",
+        "PMKVY",
+        "Kaushal",
+        "Apprenticeship",
+        "Skill",
+        "Education"
+      ],
+      "got": [
+        [
+          "Integrated Child Development Services",
+          "0.324"
+        ],
+        [
+          "Swadesh Darshan Scheme",
+          "0.312"
+        ],
+        [
+          "FAME India Scheme",
+          "0.308"
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "expected": [
+        "Scholarship",
+        "Shiksha",
+        "Education",
+        "Skill",
+        "PMKVY",
+        "Apprenticeship",
+        "student"
+      ],
+      "got": [
+        [
+          "Khelo India Scheme",
+          "0.333"
+        ],
+        [
+          "Swadesh Darshan Scheme",
+          "0.314"
+        ],
+        [
+          "Khelo India Scheme",
+          "0.312"
+        ]
+      ]
+    }
+  ]
+}
