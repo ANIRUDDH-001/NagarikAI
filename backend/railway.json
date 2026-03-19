@@ -1,0 +1,12 @@
+{
+  "build": {
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "Dockerfile"
+  },
+  "deploy": {
+    "startCommand": "./startup.sh",
+    "healthcheckPath": "/health",
+    "healthcheckTimeout": 60,
+    "restartPolicyOnFailure": "always"
+  }
+}

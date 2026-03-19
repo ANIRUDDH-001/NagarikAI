@@ -114,15 +114,21 @@ IMPORTANT: Return ONLY JSON. No explanation."""
     # Merge extracted data into existing profile (only non-null values)
     merged = dict(existing_profile)
     for key, val in extracted.items():
-        if val is not None and val != "":
+        if val is not None and val != "" and str(val).lower() not in ["none", "null"]:
             merged[key] = val
+
+    # Heuristic for housing declarations LLM JSON might miss
+    if "मकान नहीं" in user_msg or "घर नहीं" in user_msg or "no pucca house" in user_msg.lower():
+        merged["house_type"] = "kutcha"
 
     # Check if profile is complete enough to search
     # Minimum: age + state + one of (income, occupation, category)
     has_age = merged.get("age") is not None
     has_state = merged.get("state") is not None
-    has_extra = any(merged.get(k) is not None for k in ["annual_income", "occupation", "category"])
-    profile_complete = has_age and has_state and has_extra
+    has_income = merged.get("annual_income") is not None
+    has_extra = any(merged.get(k) is not None for k in ["occupation", "category"])
+    profile_complete = has_age and has_state and has_income and has_extra
+
 
     state["user_profile"] = merged
     state["profile_complete"] = profile_complete
@@ -148,8 +154,8 @@ def ask_clarification(state: GraphState) -> GraphState:
         missing.append("age")
     if not profile.get("state"):
         missing.append("state")
-    if not profile.get("annual_income") and not profile.get("occupation"):
-        missing.append("income or occupation")
+    if not profile.get("annual_income"):
+        missing.append("annual_income")
     if not profile.get("category"):
         missing.append("category (SC/ST/OBC/General/EWS)")
 

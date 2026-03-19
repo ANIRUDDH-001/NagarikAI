@@ -1,0 +1,72 @@
+
+[DEBUG graph.py] Merged Profile: {'name': 'Kamala', 'state': 'bihar'}
+[DEBUG graph.py] has_age: False, has_state: True, has_income: False, has_extra: False
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': 'cae65068-b503-4dae-aca7-5805c8000ef7', 'session_id': 'b43872f1-1653-4a47-949f-1f4d4b20de06', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': None, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': False, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T03:37:46.068768+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: False, has_extra: True
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': 'cae65068-b503-4dae-aca7-5805c8000ef7', 'session_id': 'b43872f1-1653-4a47-949f-1f4d4b20de06', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': 78000, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': True, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T03:37:46.068768+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: True, has_extra: True
+[DEBUG graph.py] profile_complete: True
+
+[DEBUG graph.py] Merged Profile: {'name': 'Kamala', 'state': 'bihar'}
+[DEBUG graph.py] has_age: False, has_state: True, has_income: False, has_extra: False
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': '63674174-1dba-4c56-8591-1536bbcb2852', 'session_id': '91cc5a57-623c-4db3-b693-1e09b548e989', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': None, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': False, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T03:39:04.307974+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: False, has_extra: True
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': '63674174-1dba-4c56-8591-1536bbcb2852', 'session_id': '91cc5a57-623c-4db3-b693-1e09b548e989', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': 78000, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': True, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T03:39:04.307974+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: True, has_extra: True
+[DEBUG graph.py] profile_complete: True
+
+[DEBUG graph.py] Merged Profile: {'name': 'Kamala', 'state': 'bihar'}
+[DEBUG graph.py] has_age: False, has_state: True, has_income: False, has_extra: False
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': 'd5f63c6f-fc29-447f-9331-131c342d4b83', 'session_id': '01fb9fe8-d550-42c5-8139-2f1b8e13e959', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': None, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': False, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T03:42:58.058523+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: False, has_extra: True
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': 'd5f63c6f-fc29-447f-9331-131c342d4b83', 'session_id': '01fb9fe8-d550-42c5-8139-2f1b8e13e959', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': 78000, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': True, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T03:42:58.058523+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: True, has_extra: True
+[DEBUG graph.py] profile_complete: True
+
+[DEBUG graph.py] Merged Profile: {'name': 'Kamala', 'state': 'bihar'}
+[DEBUG graph.py] has_age: False, has_state: True, has_income: False, has_extra: False
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': '88b85adf-4334-4f64-9f32-9a5a7e891466', 'session_id': '2a2b06b3-5d3d-4565-bf47-86e2014806a3', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': None, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': False, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T03:54:09.81328+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: False, has_extra: True
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': '88b85adf-4334-4f64-9f32-9a5a7e891466', 'session_id': '2a2b06b3-5d3d-4565-bf47-86e2014806a3', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': 78000, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': True, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T03:54:09.81328+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: True, has_extra: True
+[DEBUG graph.py] profile_complete: True
+
+[DEBUG graph.py] Merged Profile: {'name': 'Kamala', 'state': 'bihar'}
+[DEBUG graph.py] has_age: False, has_state: True, has_income: False, has_extra: False
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': '8037f5f2-60dd-48ce-94ff-dc1ef85b0312', 'session_id': '7eceaf2e-0514-4e7a-b4c6-1bd9ba129392', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': None, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': False, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T03:56:14.604658+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: False, has_extra: True
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': '8037f5f2-60dd-48ce-94ff-dc1ef85b0312', 'session_id': '7eceaf2e-0514-4e7a-b4c6-1bd9ba129392', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': 78000, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': True, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T03:56:14.604658+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: True, has_extra: True
+[DEBUG graph.py] profile_complete: True
+
+[DEBUG graph.py] Merged Profile: {'name': 'Kamala', 'state': 'bihar'}
+[DEBUG graph.py] has_age: False, has_state: True, has_income: False, has_extra: False
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': 'e942b6af-879b-4326-a227-aa638206e976', 'session_id': '84ef86f9-0fed-4cea-a8e0-a80e3d8586e4', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': None, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': False, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T04:00:15.505584+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: False, has_extra: True
+[DEBUG graph.py] profile_complete: False
+
+[DEBUG graph.py] Merged Profile: {'id': 'e942b6af-879b-4326-a227-aa638206e976', 'session_id': '84ef86f9-0fed-4cea-a8e0-a80e3d8586e4', 'name': 'Kamala', 'age': 45, 'gender': None, 'state': 'bihar', 'district': None, 'category': 'SC', 'annual_income': 78000, 'occupation': 'farmer', 'marital_status': None, 'is_bpl': True, 'has_disability': False, 'owns_land': False, 'house_type': None, 'education_level': None, 'has_bank_account': False, 'language_pref': 'hi', 'created_at': '2026-03-19T04:00:15.505584+00:00'}
+[DEBUG graph.py] has_age: True, has_state: True, has_income: True, has_extra: True
+[DEBUG graph.py] profile_complete: True

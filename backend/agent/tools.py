@@ -79,6 +79,13 @@ def search_schemes(user_profile: dict) -> list[dict]:
         search_parts.append(f"earning {income} rupees")
     if category:
         search_parts.append(f"for {category} category")
+    if user_profile.get("gender") and user_profile.get("gender").lower() != "all":
+        search_parts.append(f"for {user_profile.get('gender')}")
+    if user_profile.get("is_bpl"):
+        search_parts.append("BPL below poverty line")
+    if user_profile.get("house_type") and str(user_profile.get("house_type")).lower() in ["kutcha", "none", "no pucca house"]:
+        search_parts.append("needs housing pucca house")
+        
     search_query = " ".join(search_parts) or "government welfare schemes"
 
     # Embed the query
