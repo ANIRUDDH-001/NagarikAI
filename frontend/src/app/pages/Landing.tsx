@@ -1,21 +1,31 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useLang } from '../context/LanguageContext';
-import { Mic, Send, MessageCircle, Search, HandHelping } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Mic, Send, MessageCircle, Search, HandHelping, Sparkles, User, MapPin, Briefcase } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { VoiceWaveform } from '../components/VoiceWaveform';
 import { LiveBenefitTicker } from '../components/LiveBenefitTicker';
 
 export function Landing() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const navigate = useNavigate();
   const [input, setInput] = useState('');
   const [voiceState, setVoiceState] = useState<'default' | 'listening' | 'processing'>('default');
+  const [ghostProfile, setGhostProfile] = useState<{ state?: string; occupation?: string; age?: string } | null>(null);
 
-  const handleSubmit = (text?: string) => {
+  const handleSubmit = (text?: string, profileData?: any) => {
     const msg = text || input;
     if (!msg.trim()) return;
-    navigate('/chat', { state: { initialMessage: msg } });
+    
+    // Animate ghost profile if profile data exists
+    if (profileData) {
+      setGhostProfile(profileData);
+      setTimeout(() => {
+        navigate('/chat', { state: { initialMessage: msg } });
+      }, 800);
+    } else {
+      navigate('/chat', { state: { initialMessage: msg } });
+    }
   };
 
   const handleVoice = () => {
@@ -29,7 +39,11 @@ export function Landing() {
     }, 2000);
   };
 
-  const examples = [t('example.1'), t('example.2'), t('example.3')];
+  const examples = [
+    { text: t('example.1'), profile: { state: 'Bihar', occupation: lang === 'hi' ? 'किसान' : 'Farmer', age: '35' } },
+    { text: t('example.2'), profile: { state: 'Maharashtra', occupation: lang === 'hi' ? 'व्यापारी' : 'Business', age: '42' } },
+    { text: t('example.3'), profile: { state: 'Karnataka', occupation: lang === 'hi' ? 'छात्र' : 'Student', age: '22' } }
+  ];
 
   return (
     <div>
@@ -168,7 +182,7 @@ export function Landing() {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ delay: 0.4 }} 
-            className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto"
+            className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto mb-8"
           >
             {examples.map((ex, i) => (
               <motion.button
@@ -176,14 +190,86 @@ export function Landing() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 + i * 0.1 }}
-                onClick={() => handleSubmit(ex)}
+                onClick={() => handleSubmit(ex.text, ex.profile)}
                 className="px-5 py-2.5 rounded-full border border-border bg-white/60 backdrop-blur-sm hover:bg-white hover:border-[#FF9933] text-muted-foreground hover:text-foreground transition-all shadow-sm hover:shadow-md"
-                style={{ fontSize: '0.875rem' }}
+                style={{ fontSize: '0.875rem', fontFamily: 'Manrope, sans-serif' }}
               >
-                {ex}
+                {ex.text}
               </motion.button>
             ))}
           </motion.div>
+
+          {/* Ghost Profile Card */}
+          <AnimatePresence>
+            {ghostProfile && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                className="max-w-md mx-auto"
+              >
+                <div 
+                  className="bg-white/40 backdrop-blur-md border-2 border-white/60 rounded-2xl p-5 shadow-2xl"
+                  style={{ backdropFilter: 'blur(16px)' }}
+                >
+                  <div className="flex items-center gap-2 mb-4">
+                    <Sparkles className="w-5 h-5 text-[#FF9933]" />
+                    <h3 
+                      className="text-[#000080]" 
+                      style={{ fontWeight: 700, fontSize: '1rem', fontFamily: 'Lora, serif' }}
+                    >
+                      {lang === 'hi' ? 'प्रोफाइल निकाली जा रही है...' : 'Extracting Profile...'}
+                    </h3>
+                  </div>
+
+                  <div className="space-y-2">
+                    {ghostProfile.state && (
+                      <motion.div
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.1, type: 'spring', stiffness: 200 }}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gradient-to-r from-[#138808]/10 to-transparent border border-[#138808]/30"
+                      >
+                        <MapPin className="w-5 h-5 text-[#138808]" />
+                        <span style={{ fontSize: '0.95rem', fontWeight: 600, fontFamily: 'Manrope, sans-serif' }}>
+                          {ghostProfile.state}
+                        </span>
+                      </motion.div>
+                    )}
+
+                    {ghostProfile.occupation && (
+                      <motion.div
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gradient-to-r from-[#FF9933]/10 to-transparent border border-[#FF9933]/30"
+                      >
+                        <Briefcase className="w-5 h-5 text-[#FF9933]" />
+                        <span style={{ fontSize: '0.95rem', fontWeight: 600, fontFamily: 'Manrope, sans-serif' }}>
+                          {ghostProfile.occupation}
+                        </span>
+                      </motion.div>
+                    )}
+
+                    {ghostProfile.age && (
+                      <motion.div
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gradient-to-r from-[#000080]/10 to-transparent border border-[#000080]/30"
+                      >
+                        <User className="w-5 h-5 text-[#000080]" />
+                        <span style={{ fontSize: '0.95rem', fontWeight: 600, fontFamily: 'Manrope, sans-serif' }}>
+                          {lang === 'hi' ? `${ghostProfile.age} साल` : `${ghostProfile.age} years`}
+                        </span>
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 

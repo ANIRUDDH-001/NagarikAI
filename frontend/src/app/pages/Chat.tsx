@@ -7,6 +7,7 @@ import { Mic, Send, Volume2 } from 'lucide-react';
 import { v4Fallback } from '../utils/uuid';
 import { ProfileCard } from '../components/ProfileCard';
 import { GapCard } from '../components/GapCard';
+import { VoiceWaveform } from '../components/VoiceWaveform';
 import { motion, AnimatePresence } from 'motion/react';
 
 export function Chat() {
@@ -90,6 +91,31 @@ export function Chat() {
 
   return (
     <div className="max-w-7xl mx-auto flex h-[calc(100vh-5rem)] relative">
+      {/* Persistent Aurora Background */}
+      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <motion.div 
+          className="absolute inset-0 opacity-[0.12]"
+          animate={{
+            background: [
+              `radial-gradient(circle at 20% 30%, rgba(255, 153, 51, 0.4) 0%, transparent 50%),
+               radial-gradient(circle at 80% 60%, rgba(19, 136, 8, 0.4) 0%, transparent 50%),
+               radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 70%)`,
+              `radial-gradient(circle at 80% 40%, rgba(255, 153, 51, 0.4) 0%, transparent 50%),
+               radial-gradient(circle at 20% 70%, rgba(19, 136, 8, 0.4) 0%, transparent 50%),
+               radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 70%)`,
+              `radial-gradient(circle at 20% 30%, rgba(255, 153, 51, 0.4) 0%, transparent 50%),
+               radial-gradient(circle at 80% 60%, rgba(19, 136, 8, 0.4) 0%, transparent 50%),
+               radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 70%)`
+            ]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+      </div>
+      
       <div className="flex-1 flex flex-col min-w-0">
         <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4">
           <AnimatePresence>
@@ -108,8 +134,29 @@ export function Chat() {
                 }`}>
                   {msg.role === 'bot' && (
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#000080] to-[#000060] flex items-center justify-center shadow-md">
-                        <span className="text-white" style={{ fontSize: '0.6rem', fontWeight: 700 }}>JS</span>
+                      <div className="relative">
+                        {/* Gradient glow for bot avatar */}
+                        <div 
+                          className="absolute inset-0 rounded-full blur-sm opacity-50"
+                          style={{ 
+                            background: 'linear-gradient(135deg, rgba(255, 153, 51, 0.5) 0%, rgba(19, 136, 8, 0.5) 100%)'
+                          }}
+                        />
+                        {/* Bot avatar - Navy Blue primary */}
+                        <div 
+                          className="relative w-6 h-6 rounded-full flex items-center justify-center shadow-md"
+                          style={{
+                            background: 'linear-gradient(135deg, #000080 0%, #00006b 100%)',
+                            boxShadow: '0 1px 4px rgba(0, 0, 128, 0.3)'
+                          }}
+                        >
+                          <span 
+                            className="text-white" 
+                            style={{ fontSize: '0.6rem', fontWeight: 700, fontFamily: 'Lora, serif' }}
+                          >
+                            JS
+                          </span>
+                        </div>
                       </div>
                       <button 
                         className="text-muted-foreground hover:text-[#FF9933] transition-colors"
@@ -171,6 +218,26 @@ export function Chat() {
         </AnimatePresence>
 
         <div className="p-4 border-t border-border bg-white/80 backdrop-blur-sm">
+          {/* Voice Waveform - appears during listening */}
+          <AnimatePresence>
+            {voiceState === 'listening' && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="mb-3 flex flex-col items-center gap-2"
+              >
+                <VoiceWaveform />
+                <p 
+                  className="text-[#FF9933]" 
+                  style={{ fontSize: '0.85rem', fontWeight: 600 }}
+                >
+                  {t('voice.listening')}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          
           <div className="flex items-center gap-2">
             <button
               onClick={handleVoice}

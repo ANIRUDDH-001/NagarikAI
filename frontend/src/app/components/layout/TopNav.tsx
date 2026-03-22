@@ -14,12 +14,63 @@ export function TopNav() {
     <nav className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(180deg, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%)' }}>
-            <div className="w-3 h-3 rounded-full border-2 border-[#000080]" />
+          {/* Enhanced Logo: Navy Blue primary with Saffron/Green gradient accents */}
+          <div className="relative">
+            {/* Gradient shadow/glow */}
+            <div 
+              className="absolute inset-0 rounded-full blur-md opacity-60"
+              style={{ 
+                background: 'linear-gradient(135deg, rgba(255, 153, 51, 0.6) 0%, rgba(19, 136, 8, 0.6) 100%)'
+              }}
+            />
+            {/* Main logo circle - Navy Blue */}
+            <div 
+              className="relative w-9 h-9 rounded-full flex items-center justify-center shadow-lg"
+              style={{ 
+                background: 'linear-gradient(135deg, #000080 0%, #00006b 100%)',
+                boxShadow: '0 2px 8px rgba(0, 0, 128, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.3)'
+              }}
+            >
+              {/* Inner ring with gradient */}
+              <div 
+                className="w-5 h-5 rounded-full flex items-center justify-center"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255, 153, 51, 0.2) 0%, rgba(19, 136, 8, 0.2) 100%)',
+                  border: '2px solid rgba(255, 255, 255, 0.9)'
+                }}
+              >
+                {/* Center dot */}
+                <div 
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ 
+                    background: 'linear-gradient(135deg, #FF9933 0%, #138808 100%)'
+                  }}
+                />
+              </div>
+            </div>
           </div>
           <div>
-            <span className="text-[#000080]" style={{ fontSize: '1.125rem', fontWeight: 700 }}>{t('nav.wordmark')}</span>
-            <p className="text-muted-foreground" style={{ fontSize: '0.7rem', lineHeight: 1.2 }}>{t('nav.subtext')}</p>
+            <span 
+              className="text-[#000080]" 
+              style={{ 
+                fontSize: '1.125rem', 
+                fontWeight: 700,
+                fontFamily: 'Lora, serif',
+                textShadow: '0 1px 2px rgba(255, 153, 51, 0.1)'
+              }}
+            >
+              {t('nav.wordmark')}
+            </span>
+            <p 
+              className="text-muted-foreground" 
+              style={{ 
+                fontSize: '0.7rem', 
+                lineHeight: 1.2,
+                fontFamily: 'Manrope, sans-serif'
+              }}
+            >
+              {t('nav.subtext')}
+            </p>
           </div>
         </Link>
 

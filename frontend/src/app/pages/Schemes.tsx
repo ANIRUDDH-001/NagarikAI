@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router';
 import { useLang } from '../context/LanguageContext';
 import { useApp } from '../context/AppContext';
@@ -16,20 +16,43 @@ const domainColors: Record<string, string> = {
 function getMatchReasons(scheme: any, profile: any, lang: 'en' | 'hi') {
   const reasons = [];
   
+  // Enhanced match transparency with actual data
   if (scheme.name.includes('Farmer') || scheme.name.includes('Kisan')) {
-    reasons.push(lang === 'hi' ? 'पेशा: किसान' : 'Occupation: Farmer');
+    reasons.push(
+      lang === 'hi' 
+        ? `पेशा: ${profile.occupation || 'किसान'}` 
+        : `Occupation: ${profile.occupation || 'Farmer'}`
+    );
   }
   if (scheme.name.includes('Women') || scheme.name.includes('Mahila')) {
-    reasons.push(lang === 'hi' ? 'लिंग: महिला' : 'Gender: Female');
+    reasons.push(lang === 'hi' ? `लिंग: ${profile.gender || 'महिला'}` : `Gender: ${profile.gender || 'Female'}`);
   }
   if (profile.age && parseInt(profile.age) >= 18) {
-    reasons.push(lang === 'hi' ? 'उम्र: 18+' : 'Age: 18+');
+    const age = parseInt(profile.age);
+    if (age >= 60) {
+      reasons.push(lang === 'hi' ? `वरिष्ठ नागरिक (${age})` : `Senior Citizen (${age})`);
+    } else {
+      reasons.push(lang === 'hi' ? `उम्र: ${age} वर्ष` : `Age: ${age} years`);
+    }
   }
   if (profile.state) {
     reasons.push(lang === 'hi' ? `राज्य: ${profile.state}` : `State: ${profile.state}`);
   }
-  if (profile.income && parseInt(profile.income) < 200000) {
-    reasons.push(lang === 'hi' ? 'आमदनी: पात्र' : 'Income: Eligible');
+  if (profile.income) {
+    const income = parseInt(profile.income);
+    if (income < 200000) {
+      reasons.push(
+        lang === 'hi' 
+          ? `आमदनी ₹${income.toLocaleString('en-IN')} < ₹2,00,000` 
+          : `Income ₹${income.toLocaleString('en-IN')} < ₹2,00,000 limit`
+      );
+    }
+  }
+  if (profile.category && profile.category !== 'General') {
+    reasons.push(lang === 'hi' ? `वर्ग: ${profile.category}` : `Category: ${profile.category}`);
+  }
+  if (profile.bpl === 'Yes' || profile.bpl === 'हाँ') {
+    reasons.push(lang === 'hi' ? 'बीपीएल परिवार' : 'BPL Family');
   }
   
   return reasons.slice(0, 3);
@@ -43,6 +66,7 @@ export function Schemes() {
   const [sort, setSort] = useState('highest');
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [listeningTo, setListeningTo] = useState<string | null>(null);
+  const [currentStepIndex, setCurrentStepIndex] = useState<Record<string, number>>({});
 
   const domains = ['All', 'Agriculture', 'Health', 'Education', 'Employment', 'Social welfare'];
   const domainKeys = ['filter.all', 'filter.agriculture', 'filter.health', 'filter.education', 'filter.employment', 'filter.social'];
@@ -51,10 +75,28 @@ export function Schemes() {
     .filter(s => activeDomain === 'All' || s.domain === activeDomain)
     .sort((a, b) => sort === 'highest' ? b.benefit - a.benefit : sort === 'best' ? b.matchConfidence - a.matchConfidence : a.steps.length - b.steps.length);
 
-  const handleListenToGuide = (schemeId: string) => {
-    setListeningTo(listeningTo === schemeId ? null : schemeId);
-    if (listeningTo !== schemeId) {
-      setTimeout(() => setListeningTo(null), 5000);
+  const handleListenToGuide = (schemeId: string, stepsCount: number) => {
+    if (listeningTo === schemeId) {
+      // Stop listening
+      setListeningTo(null);
+      setCurrentStepIndex(prev => ({ ...prev, [schemeId]: 0 }));
+    } else {
+      // Start listening
+      setListeningTo(schemeId);
+      setCurrentStepIndex(prev => ({ ...prev, [schemeId]: 0 }));
+      
+      // Step through each step (1.5 seconds per step)
+      let stepIdx = 0;
+      const interval = setInterval(() => {
+        stepIdx++;
+        if (stepIdx < stepsCount) {
+          setCurrentStepIndex(prev => ({ ...prev, [schemeId]: stepIdx }));
+        } else {
+          clearInterval(interval);
+          setListeningTo(null);
+          setCurrentStepIndex(prev => ({ ...prev, [schemeId]: 0 }));
+        }
+      }, 1500);
     }
   };
 
@@ -275,7 +317,7 @@ export function Schemes() {
                             {t('detail.steps')}
                           </h4>
                           <button
-                            onClick={() => handleListenToGuide(scheme.id)}
+                            onClick={() => handleListenToGuide(scheme.id, scheme.steps.length)}
                             className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
                               isListening
                                 ? 'bg-[#FF9933] text-white'
@@ -291,15 +333,29 @@ export function Schemes() {
                           </button>
                         </div>
                         <ol className="list-decimal list-inside space-y-2 ml-2">
-                          {scheme.steps.map((s: any, i: number) => (
-                            <li 
-                              key={i} 
-                              className={isListening ? 'text-[#FF9933]' : ''}
-                              style={{ fontSize: '0.9rem', fontWeight: isListening ? 600 : 400 }}
-                            >
-                              {lang === 'hi' ? s.stepHi : s.step}
-                            </li>
-                          ))}
+                          {scheme.steps.map((s: any, i: number) => {
+                            const isActiveStep = isListening && (currentStepIndex[scheme.id] || 0) === i;
+                            
+                            return (
+                              <motion.li 
+                                key={i} 
+                                initial={{ backgroundColor: 'transparent' }}
+                                animate={{
+                                  backgroundColor: isActiveStep ? 'rgba(255, 153, 51, 0.1)' : 'transparent',
+                                  color: isActiveStep ? '#FF9933' : undefined,
+                                }}
+                                transition={{ duration: 0.3 }}
+                                className={`px-2 py-1 rounded transition-all ${isActiveStep ? 'shadow-sm' : ''}`}
+                                style={{ 
+                                  fontSize: '0.9rem', 
+                                  fontWeight: isActiveStep ? 700 : 400,
+                                  fontFamily: 'Manrope, sans-serif'
+                                }}
+                              >
+                                {lang === 'hi' ? s.stepHi : s.step}
+                              </motion.li>
+                            );
+                          })}
                         </ol>
                       </div>
 
