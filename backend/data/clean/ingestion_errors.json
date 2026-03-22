@@ -1,6 +1,0 @@
-[
-  {
-    "scheme_name": "Pradhan Mantri Awas Yojana - Urban (PMAY-U)",
-    "error": "{'message': 'invalid input syntax for type integer: \"{\"EWS\":300000,\"LIG\":600000,\"MIG-I\":1200000,\"MIG-II\":1800000}\"', 'code': '22P02', 'hint': None, 'details': None}"
-  }
-]

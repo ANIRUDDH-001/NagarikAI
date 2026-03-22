@@ -18,3 +18,11 @@ venv.bak/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+*.log
+debug_*.json
+debug_graph.log
+debug_profile.json
+debug_profile_turn3.json
+backend/data/clean/checkpoint.json
+.env
