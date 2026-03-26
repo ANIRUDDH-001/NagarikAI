@@ -1,0 +1,124 @@
+================================================================================
+ALL 30 COLLECTED AGRICULTURE SCHEMES - QUICK REFERENCE
+================================================================================
+
+NATIONAL / CENTRAL GOVERNMENT SCHEMES (12):
+--------------------------------------------------------------------------------
+ 1. Agriculture Infrastructure Fund (AIF)
+    URL: https://agriinfra.dac.gov.in/
+
+ 2. Mission for Integrated Development of Horticulture (MIDH)
+    URL: https://midh.gov.in/
+
+ 3. National Agriculture Market (e-NAM)
+    URL: https://www.enam.gov.in/web/
+
+ 4. National Beekeeping and Honey Mission (NBHM)
+    URL: https://dahd.gov.in/
+
+ 5. National Dairy Development Program
+    URL: https://www.nddb.coop/
+
+ 6. National Food Security Mission (NFSM)
+    URL: https://nfsm.gov.in/
+
+ 7. PM Kisan Maandhan Yojana (PM-KMY)
+    URL: https://pmkmy.gov.in/
+
+ 8. Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)
+    URL: https://pmkisan.gov.in/
+
+ 9. Pradhan Mantri Kisan Urja Suraksha evam Utthan Mahabhiyan (PM-KUSUM)
+    URL: https://mnre.gov.in/solar/schemes
+
+10. Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)
+    URL: https://pmksy.gov.in/
+
+11. Rashtriya Krishi Vikas Yojana (RKVY)
+    URL: https://rkvy.da.gov.in/
+
+12. Sub-Mission on Agricultural Mechanization (SMAM)
+    URL: https://agrimachinery.nic.in/
+
+ASSAM SCHEMES (1):
+--------------------------------------------------------------------------------
+* Assam Mukhyamantri Krishi Sa-Ayog Yojana
+  URL: https://agri-horti.assam.gov.in/
+
+GOA SCHEMES (1):
+--------------------------------------------------------------------------------
+* Goa Sanjivani Agro Products Production Scheme
+  URL: https://www.goa.gov.in/department/agriculture/
+
+HARYANA SCHEMES (1):
+--------------------------------------------------------------------------------
+* Haryana Meri Fasal Mera Byora
+  URL: https://fasal.haryana.gov.in/
+
+JHARKHAND SCHEMES (1):
+--------------------------------------------------------------------------------
+* Jharkhand Birsa Harit Gram Yojana
+  URL: https://jharkhand.gov.in/agriculture
+
+KARNATAKA SCHEMES (2):
+--------------------------------------------------------------------------------
+* Karnataka Raita Samparka Kendra
+  URL: https://raitamitra.karnataka.gov.in/
+* Karnataka Seva Sindhu Agriculture Schemes
+  URL: https://sevasindhu.karnataka.gov.in/
+
+KERALA SCHEMES (1):
+--------------------------------------------------------------------------------
+* Kerala Homestead Farming
+  URL: https://keralaagriculture.gov.in/
+
+MADHYA PRADESH SCHEMES (2):
+--------------------------------------------------------------------------------
+* MP Mukhyamantri Kisan Kalyan Yojana
+  URL: https://mpkrishi.mp.gov.in/
+* MP e-Krishi Yantra Anudan
+  URL: https://dbt.mpdage.org/
+
+MAHARASHTRA SCHEMES (2):
+--------------------------------------------------------------------------------
+* Maharashtra Agriculture Department
+  URL: https://krishi.maharashtra.gov.in/
+* Maharashtra Paramparagat Krishi Vikas Yojana
+  URL: https://mahadbt.maharashtra.gov.in/
+
+ODISHA SCHEMES (1):
+--------------------------------------------------------------------------------
+* Odisha BALARAM Yojana
+  URL: https://agri.odisha.gov.in/
+
+PUNJAB SCHEMES (1):
+--------------------------------------------------------------------------------
+* Punjab Anaaj Kharid Portal
+  URL: https://anaajkharid.in/
+
+RAJASTHAN SCHEMES (1):
+--------------------------------------------------------------------------------
+* Rajasthan Mukhyamantri Kisan Kalyan Yojana
+  URL: https://jansoochna.rajasthan.gov.in/
+
+TAMIL NADU SCHEMES (1):
+--------------------------------------------------------------------------------
+* Tamil Nadu Agriculture Farmer Welfare
+  URL: https://www.tnagrisnet.tn.gov.in/
+
+UTTAR PRADESH SCHEMES (1):
+--------------------------------------------------------------------------------
+* UP Pardarshi Kisan Seva Yojana
+  URL: http://upagripardarshi.gov.in/Index-1.aspx
+
+UTTARAKHAND SCHEMES (1):
+--------------------------------------------------------------------------------
+* Uttarakhand Mukhyamantri Krishi Utthan Yojana
+  URL: https://agriculture.uk.gov.in/
+
+WEST BENGAL SCHEMES (1):
+--------------------------------------------------------------------------------
+* West Bengal Krishak Bandhu Scheme
+  URL: https://krishakbandhu.net/
+
+================================================================================

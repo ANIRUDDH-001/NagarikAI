@@ -1,0 +1,47 @@
+{
+  "summary": {
+    "total_sources": 5,
+    "successful": 0,
+    "failed": 0,
+    "total_schemes": 0,
+    "timestamp": "2026-03-26T20:00:38.260519",
+    "results": [
+      {
+        "source": "Himachal Pradesh Agriculture",
+        "state": "himachal_pradesh",
+        "status": "FAILED",
+        "count": 0,
+        "error": "RetryError[<Future at 0x186fd63f9d0 state=finished raised ClientConnectorError>]"
+      },
+      {
+        "source": "Jammu & Kashmir Agriculture",
+        "state": "jammu_kashmir",
+        "status": "FAILED",
+        "count": 0,
+        "error": "RetryError[<Future at 0x186fd63faf0 state=finished raised ClientConnectorError>]"
+      },
+      {
+        "source": "Gujarat Agriculture Department",
+        "state": "gujarat",
+        "status": "FAILED",
+        "count": 0,
+        "error": "RetryError[<Future at 0x186fdee9180 state=finished raised ClientConnectorError>]"
+      },
+      {
+        "source": "Chhattisgarh Agriculture",
+        "state": "chhattisgarh",
+        "status": "FAILED",
+        "count": 0,
+        "error": "RetryError[<Future at 0x186fdee9ab0 state=finished raised ClientConnectorError>]"
+      },
+      {
+        "source": "West Bengal Agriculture",
+        "state": "west_bengal",
+        "status": "FAILED",
+        "count": 0,
+        "error": "RetryError[<Future at 0x186fdee9900 state=finished raised ClientConnectorError>]"
+      }
+    ]
+  },
+  "schemes": []
+}

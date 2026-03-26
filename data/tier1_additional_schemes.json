@@ -1,0 +1,47 @@
+{
+  "summary": {
+    "total_sources": 5,
+    "successful": 0,
+    "failed": 0,
+    "total_schemes": 0,
+    "timestamp": "2026-03-26T20:00:27.737621",
+    "results": [
+      {
+        "source": "Bihar Agriculture Department",
+        "state": "bihar",
+        "status": "FAILED - Could not fetch",
+        "count": 0,
+        "error": "Network or server error"
+      },
+      {
+        "source": "Andhra Pradesh Agriculture Department",
+        "state": "andhra_pradesh",
+        "status": "PARTIAL - Extraction failed",
+        "count": 0,
+        "error": "Could not parse HTML structure"
+      },
+      {
+        "source": "Telangana Agriculture Department",
+        "state": "telangana",
+        "status": "PARTIAL - Extraction failed",
+        "count": 0,
+        "error": "Could not parse HTML structure"
+      },
+      {
+        "source": "Mission Integrated Development Horticulture (MIDH)",
+        "state": "national",
+        "status": "PARTIAL - Extraction failed",
+        "count": 0,
+        "error": "Could not parse HTML structure"
+      },
+      {
+        "source": "Fisheries Division - DAC",
+        "state": "national",
+        "status": "FAILED",
+        "count": 0,
+        "error": "RetryError[<Future at 0x186fd63f5b0 state=finished raised ClientConnectorError>]"
+      }
+    ]
+  },
+  "schemes": []
+}
