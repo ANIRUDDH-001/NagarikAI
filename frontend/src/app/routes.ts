@@ -15,6 +15,7 @@ import { Pipeline } from './pages/admin/Pipeline';
 import { AdminSchemes } from './pages/admin/AdminSchemes';
 import { Sessions } from './pages/admin/Sessions';
 import { AdminUsers } from './pages/admin/AdminUsers';
+import { VedAvatarShowcase } from './pages/VedAvatarShowcase';
 
 // App routes configuration
 export const router = createBrowserRouter([
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
       { path: 'track', Component: Track },
       { path: 'profile', Component: Profile },
       { path: 'form-fill', Component: AgriFormFill },
+      { path: 'avatar-showcase', Component: VedAvatarShowcase }, // Dev/Demo page
       {
         path: 'admin',
         Component: AdminLayout,

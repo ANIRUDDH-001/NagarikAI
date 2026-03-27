@@ -8,6 +8,7 @@ interface VedAvatarProps {
   processing?: boolean;
   showLabel?: boolean;
   showPlatform?: boolean;
+  variant?: 'hero' | 'chat' | 'profile'; // New variant prop for different contexts
 }
 
 export function VedAvatar({ 
@@ -16,10 +17,16 @@ export function VedAvatar({
   listening = false, 
   processing = false,
   showLabel = false,
-  showPlatform = false 
+  showPlatform = false,
+  variant = 'hero'
 }: VedAvatarProps) {
   const [blinking, setBlinking] = useState(false);
   const [mouthOpen, setMouthOpen] = useState(false);
+
+  // Responsive size adjustments based on variant
+  const actualSize = variant === 'chat' ? 32 : variant === 'profile' ? 64 : size;
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const responsiveSize = variant === 'hero' && isMobile ? 120 : actualSize;
 
   // Eye blink every 3-5 seconds
   useEffect(() => {
@@ -40,34 +47,66 @@ export function VedAvatar({
     return () => clearInterval(interval);
   }, [speaking]);
 
-  const ringColor = speaking ? 'rgba(19,136,8,0.3)' : listening ? 'rgba(255,153,51,0.3)' : 'transparent';
+  const ringColor = speaking ? 'rgba(255,153,51,1)' : listening ? 'rgba(255,153,51,0.5)' : 'transparent';
   const ringSpeed = speaking ? 0.8 : 1.5;
+
+  // Processing state: desaturate and add opacity
+  const containerOpacity = processing ? 0.8 : 1;
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative" style={{ width: size + 40, height: size + 40 }}>
-        {/* Breathing saffron glow */}
-        <motion.div
-          className="absolute rounded-full"
-          style={{
-            width: 280,
-            height: 280,
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            background: 'radial-gradient(circle, rgba(255,153,51,0.08) 0%, transparent 70%)',
-          }}
-          animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        />
-
-        {/* Listening/Speaking ring */}
-        {(listening || speaking) && (
+      <motion.div 
+        className="relative" 
+        style={{ 
+          width: responsiveSize + 40, 
+          height: responsiveSize + 40,
+          opacity: containerOpacity,
+          filter: processing ? 'saturate(0.7)' : 'saturate(1)',
+          transition: 'filter 0.3s ease, opacity 0.3s ease'
+        }}
+      >
+        {/* Breathing saffron glow - only show in hero variant */}
+        {variant === 'hero' && (
           <motion.div
             className="absolute rounded-full"
             style={{
-              width: size + 40,
-              height: size + 40,
+              width: responsiveSize * 1.3,
+              height: responsiveSize * 1.3,
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+              background: 'radial-gradient(circle, rgba(255,153,51,0.08) 0%, transparent 70%)',
+            }}
+            animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        )}
+
+        {/* Speaking pulse ring with enhanced animation */}
+        {speaking && (
+          <motion.div
+            className="absolute rounded-full"
+            style={{
+              width: responsiveSize + 40,
+              height: responsiveSize + 40,
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+              border: `2px solid ${ringColor}`,
+              boxShadow: `0 0 20px ${ringColor}`,
+            }}
+            animate={{ scale: [1, 1.08, 1] }}
+            transition={{ duration: ringSpeed, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        )}
+
+        {/* Listening ring */}
+        {listening && !speaking && (
+          <motion.div
+            className="absolute rounded-full"
+            style={{
+              width: responsiveSize + 40,
+              height: responsiveSize + 40,
               left: '50%',
               top: '50%',
               transform: 'translate(-50%, -50%)',
@@ -83,13 +122,14 @@ export function VedAvatar({
           <motion.div
             className="absolute rounded-full"
             style={{
-              width: size + 30,
-              height: size + 30,
+              width: responsiveSize + 30,
+              height: responsiveSize + 30,
               left: '50%',
               top: '50%',
               transform: 'translate(-50%, -50%)',
-              border: '2px solid transparent',
+              border: '3px solid transparent',
               borderTopColor: '#FF9933',
+              borderRightColor: '#FF9933',
             }}
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
@@ -101,8 +141,8 @@ export function VedAvatar({
           <div
             className="absolute rounded-full"
             style={{
-              width: size + 20,
-              height: size + 20,
+              width: responsiveSize + 20,
+              height: responsiveSize + 20,
               left: '50%',
               top: '50%',
               transform: 'translate(-50%, -50%)',
@@ -113,8 +153,8 @@ export function VedAvatar({
 
         {/* Avatar SVG */}
         <svg
-          width={size}
-          height={size}
+          width={responsiveSize}
+          height={responsiveSize}
           viewBox="0 0 220 220"
           fill="none"
           style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
@@ -169,7 +209,7 @@ export function VedAvatar({
             <path d="M100 96 Q110 104, 120 96" stroke="#8B4513" strokeWidth="2" fill="none" strokeLinecap="round" />
           )}
         </svg>
-      </div>
+      </motion.div>
 
       {/* Label */}
       {showLabel && (
@@ -182,19 +222,47 @@ export function VedAvatar({
   );
 }
 
-// Small version for chat bubbles
-export function VedAvatarSmall({ speaking = false }: { speaking?: boolean }) {
+// Enhanced small version for chat bubbles
+export function VedAvatarSmall({ speaking = false, processing = false }: { speaking?: boolean; processing?: boolean }) {
   return (
-    <div className="relative">
+    <div className="relative w-8 h-8 flex-shrink-0">
+      {/* Speaking pulse animation */}
       {speaking && (
         <motion.div
           className="absolute inset-0 rounded-full"
-          style={{ border: '2px solid rgba(255,153,51,0.5)' }}
+          style={{ 
+            border: '2px solid rgba(255,153,51,0.8)',
+            boxShadow: '0 0 10px rgba(255,153,51,0.5)'
+          }}
           animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 1, repeat: Infinity }}
+          transition={{ duration: 1, repeat: Infinity, ease: 'easeInOut' }}
         />
       )}
-      <svg width="28" height="28" viewBox="0 0 220 220" fill="none">
+      
+      {/* Processing spinner */}
+      {processing && (
+        <motion.div
+          className="absolute inset-0 rounded-full"
+          style={{ 
+            border: '2px solid transparent',
+            borderTopColor: '#FF9933',
+          }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+        />
+      )}
+      
+      <svg 
+        width="32" 
+        height="32" 
+        viewBox="0 0 220 220" 
+        fill="none"
+        style={{
+          opacity: processing ? 0.8 : 1,
+          filter: processing ? 'saturate(0.7)' : 'saturate(1)',
+          transition: 'filter 0.3s ease, opacity 0.3s ease'
+        }}
+      >
         <circle cx="110" cy="110" r="108" fill="#000080" />
         <ellipse cx="110" cy="80" rx="35" ry="38" fill="#C68642" />
         <ellipse cx="110" cy="50" rx="33" ry="18" fill="#2C1810" />
@@ -207,6 +275,39 @@ export function VedAvatarSmall({ speaking = false }: { speaking?: boolean }) {
         <rect x="85" y="115" width="50" height="55" rx="16" fill="#F5F5F5" />
         <path d="M98 115 L110 126 L122 115" stroke="#FF9933" strokeWidth="2" fill="none" />
       </svg>
+    </div>
+  );
+}
+
+// Profile size version (64px)
+export function VedAvatarProfile({ speaking = false, processing = false }: { speaking?: boolean; processing?: boolean }) {
+  return (
+    <div className="relative w-16 h-16 flex-shrink-0">
+      {speaking && (
+        <motion.div
+          className="absolute inset-0 rounded-full"
+          style={{ 
+            border: '2px solid rgba(255,153,51,0.8)',
+            boxShadow: '0 0 15px rgba(255,153,51,0.5)'
+          }}
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{ duration: 1, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      )}
+      
+      {processing && (
+        <motion.div
+          className="absolute inset-0 rounded-full"
+          style={{ 
+            border: '2px solid transparent',
+            borderTopColor: '#FF9933',
+          }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+        />
+      )}
+      
+      <VedAvatar size={64} speaking={speaking} processing={processing} variant="profile" />
     </div>
   );
 }
