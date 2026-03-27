@@ -3,11 +3,17 @@ import { useLocation, useNavigate } from 'react-router';
 import { useLang } from '../context/LanguageContext';
 import { useApp } from '../context/AppContext';
 import { mockSchemes, botResponses } from '../utils/mockData';
-import { Mic, Send, Volume2 } from 'lucide-react';
+import { Send, Volume2 } from 'lucide-react';
 import { v4Fallback } from '../utils/uuid';
 import { ProfileCard } from '../components/ProfileCard';
 import { GapCard } from '../components/GapCard';
 import { VoiceWaveform } from '../components/VoiceWaveform';
+import { VoiceButton } from '../components/VoiceButton';
+import { ChatProgressBar } from '../components/ChatProgressBar';
+import { OccupationCards } from '../components/OccupationCards';
+import { LanguageDetectionBanner } from '../components/LanguageDetectionBanner';
+import { GoodbyeSummary } from '../components/GoodbyeSummary';
+import { VedAvatarSmall } from '../components/VedAvatar';
 import { motion, AnimatePresence } from 'motion/react';
 
 export function Chat() {
@@ -21,6 +27,15 @@ export function Chat() {
   const [voiceState, setVoiceState] = useState<'default' | 'listening' | 'processing'>('default');
   const [showSavePrompt, setShowSavePrompt] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showOccupationCards, setShowOccupationCards] = useState(false);
+  const [showLangBanner, setShowLangBanner] = useState(false);
+  const [showGoodbye, setShowGoodbye] = useState(false);
+  const [silenceTimer, setSilenceTimer] = useState(0);
+  const silenceRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Progress bar step
+  const progressStep = chatState === 'intake' ? 0 : chatState === 'match' ? 1 : 2;
+  const profileProgress = [profile.state, profile.occupation, profile.age].filter(Boolean).length;
 
   useEffect(() => {
     if (messages.length === 0) {
@@ -37,12 +52,37 @@ export function Chat() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
   }, [messages, typing]);
 
+  // Silence timer
+  useEffect(() => {
+    const resetSilence = () => setSilenceTimer(0);
+    
+    if (silenceRef.current) clearInterval(silenceRef.current);
+    silenceRef.current = setInterval(() => {
+      setSilenceTimer(prev => {
+        if (prev >= 30) {
+          setShowGoodbye(true);
+          if (silenceRef.current) clearInterval(silenceRef.current);
+          return 0;
+        }
+        return prev + 1;
+      });
+    }, 1000);
+
+    return () => { if (silenceRef.current) clearInterval(silenceRef.current); };
+  }, [messages.length]);
+
   const handleSend = (text?: string) => {
     const msg = text || input;
     if (!msg.trim()) return;
     setInput('');
+    setSilenceTimer(0);
     addMessage({ id: v4Fallback(), role: 'user', text: msg });
     setTyping(true);
+
+    // Show language detection banner on first user message
+    if (messages.filter(m => m.role === 'user').length === 0) {
+      setTimeout(() => setShowLangBanner(true), 500);
+    }
 
     setTimeout(() => {
       const match = botResponses.find(r => msg.toLowerCase().includes(r.trigger)) || botResponses[2];
@@ -65,11 +105,41 @@ export function Chat() {
 
       addMessage({ id: v4Fallback(), role: 'bot', text: reply });
       setTyping(false);
+
+      // Show occupation cards after matching for farmer queries
+      if (msg.toLowerCase().includes('farmer') || msg.toLowerCase().includes('किसान')) {
+        setTimeout(() => {
+          addMessage({
+            id: v4Fallback(),
+            role: 'bot',
+            text: lang === 'hi' ? 'आप क्या उगाते हैं?' : 'What do you grow?',
+          });
+          setShowOccupationCards(true);
+        }, 1000);
+      }
     }, 2000);
+  };
+
+  const handleOccupationSelect = (value: string) => {
+    setShowOccupationCards(false);
+    addMessage({ id: v4Fallback(), role: 'user', text: value });
+    setTyping(true);
+    setTimeout(() => {
+      addMessage({
+        id: v4Fallback(),
+        role: 'bot',
+        text: lang === 'hi'
+          ? `बहुत अच्छा! ${value} के लिए भी विशेष योजनाएं हैं। क्या आप form भरना चाहते हैं?`
+          : `Great! There are special schemes for ${value} too. Would you like to fill the form?`,
+      });
+      setTyping(false);
+      setChatState('guide');
+    }, 1500);
   };
 
   const handleVoice = () => {
     setVoiceState('listening');
+    setSilenceTimer(0);
     setTimeout(() => {
       setVoiceState('processing');
       setTimeout(() => {
@@ -89,9 +159,11 @@ export function Chat() {
     { key: 'gender', label: t('profile.gender'), value: profile.gender },
   ];
 
+  const showSilenceBar = silenceTimer >= 20 && silenceTimer < 30;
+
   return (
     <div className="max-w-7xl mx-auto flex h-[calc(100vh-5rem)] relative">
-      {/* Persistent Aurora Background */}
+      {/* Aurora Background */}
       <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
         <motion.div 
           className="absolute inset-0 opacity-[0.12]"
@@ -108,15 +180,17 @@ export function Chat() {
                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 70%)`
             ]
           }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
       </div>
       
       <div className="flex-1 flex flex-col min-w-0">
+        {/* Progress Bar */}
+        <ChatProgressBar activeStep={progressStep as 0 | 1 | 2} profileProgress={profileProgress} />
+
+        {/* Language Detection Banner */}
+        <LanguageDetectionBanner detectedLang={lang} visible={showLangBanner} />
+
         <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4">
           <AnimatePresence>
             {messages.map((msg, index) => (
@@ -134,33 +208,10 @@ export function Chat() {
                 }`}>
                   {msg.role === 'bot' && (
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="relative">
-                        {/* Gradient glow for bot avatar */}
-                        <div 
-                          className="absolute inset-0 rounded-full blur-sm opacity-50"
-                          style={{ 
-                            background: 'linear-gradient(135deg, rgba(255, 153, 51, 0.5) 0%, rgba(19, 136, 8, 0.5) 100%)'
-                          }}
-                        />
-                        {/* Bot avatar - Navy Blue primary */}
-                        <div 
-                          className="relative w-6 h-6 rounded-full flex items-center justify-center shadow-md"
-                          style={{
-                            background: 'linear-gradient(135deg, #000080 0%, #00006b 100%)',
-                            boxShadow: '0 1px 4px rgba(0, 0, 128, 0.3)'
-                          }}
-                        >
-                          <span 
-                            className="text-white" 
-                            style={{ fontSize: '0.6rem', fontWeight: 700, fontFamily: 'Lora, serif' }}
-                          >
-                            JS
-                          </span>
-                        </div>
-                      </div>
+                      <VedAvatarSmall />
                       <button 
                         className="text-muted-foreground hover:text-[#FF9933] transition-colors"
-                        title={t('chat.speak')}
+                        title={lang === 'hi' ? 'सुनें' : 'Listen'}
                       >
                         <Volume2 className="w-4 h-4" />
                       </button>
@@ -171,6 +222,9 @@ export function Chat() {
               </motion.div>
             ))}
           </AnimatePresence>
+
+          {/* Occupation Cards */}
+          <OccupationCards visible={showOccupationCards} onSelect={handleOccupationSelect} />
 
           {typing && (
             <motion.div 
@@ -217,8 +271,50 @@ export function Chat() {
           )}
         </AnimatePresence>
 
-        <div className="p-4 border-t border-border bg-white/80 backdrop-blur-sm">
-          {/* Voice Waveform - appears during listening */}
+        {/* Form Fill CTA */}
+        <AnimatePresence>
+          {chatState === 'guide' && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="mx-4 mb-2"
+            >
+              <button
+                onClick={() => navigate('/form-fill')}
+                className="w-full py-3 rounded-xl text-white flex items-center justify-center gap-2"
+                style={{
+                  background: 'linear-gradient(90deg, #FF9933, #e8882d)',
+                  fontWeight: 600,
+                  fontSize: '15px',
+                  fontFamily: 'Manrope, sans-serif',
+                }}
+              >
+                {lang === 'hi' ? 'Form भरें →' : 'Fill Form →'}
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className="p-4 border-t border-border bg-white/80 backdrop-blur-sm relative">
+          {/* Silence timer bar */}
+          {showSilenceBar && (
+            <div className="absolute -top-6 left-0 right-0 px-4">
+              <p className="text-center text-muted-foreground mb-1" style={{ fontSize: '11px', fontFamily: 'Manrope, sans-serif' }}>
+                {lang === 'hi' ? `${30 - silenceTimer} सेकेंड में सारांश देंगे...` : `Summary in ${30 - silenceTimer}s...`}
+              </p>
+              <div className="h-1 bg-muted rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-[#FF9933] rounded-full"
+                  initial={{ width: '100%' }}
+                  animate={{ width: `${((30 - silenceTimer) / 10) * 100}%` }}
+                  transition={{ duration: 1, ease: 'linear' }}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Voice Waveform */}
           <AnimatePresence>
             {voiceState === 'listening' && (
               <motion.div
@@ -228,10 +324,7 @@ export function Chat() {
                 className="mb-3 flex flex-col items-center gap-2"
               >
                 <VoiceWaveform />
-                <p 
-                  className="text-[#FF9933]" 
-                  style={{ fontSize: '0.85rem', fontWeight: 600 }}
-                >
+                <p className="text-[#FF9933]" style={{ fontSize: '0.85rem', fontWeight: 600 }}>
                   {t('voice.listening')}
                 </p>
               </motion.div>
@@ -239,31 +332,19 @@ export function Chat() {
           </AnimatePresence>
           
           <div className="flex items-center gap-2">
-            <button
-              onClick={handleVoice}
-              className={`w-11 h-11 rounded-full flex items-center justify-center shrink-0 transition-all shadow-md ${
-                voiceState === 'listening' 
-                  ? 'bg-gradient-to-br from-red-500 to-red-600 animate-pulse shadow-red-500/50' 
-                  : voiceState === 'processing' 
-                  ? 'bg-gradient-to-br from-[#FF9933] to-[#e8882d] animate-spin' 
-                  : 'bg-muted hover:bg-muted/80 hover:scale-105'
-              }`}
-              title={t('chat.hold')}
-            >
-              <Mic className={`w-5 h-5 ${voiceState !== 'default' ? 'text-white' : ''}`} />
-            </button>
+            <VoiceButton onClick={handleVoice} state={voiceState} size="sm" />
             <input
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleSend()}
               placeholder={t('chat.placeholder')}
               className="flex-1 px-5 py-3 rounded-full border border-border bg-white focus:border-[#FF9933] outline-none transition-all"
-              style={{ fontSize: '0.95rem' }}
+              style={{ fontSize: '0.95rem', fontFamily: 'Manrope, sans-serif' }}
             />
             <button
               onClick={() => handleSend()}
               className="w-11 h-11 rounded-full bg-gradient-to-br from-[#138808] to-[#0f6d06] text-white flex items-center justify-center shrink-0 hover:scale-105 transition-all shadow-md hover:shadow-lg"
-              aria-label={t('chat.send')}
+              aria-label={lang === 'hi' ? 'भेजें' : 'Send'}
             >
               <Send className="w-5 h-5" />
             </button>
@@ -306,6 +387,9 @@ export function Chat() {
           </div>
         </div>
       </div>
+
+      {/* Goodbye Summary */}
+      <GoodbyeSummary visible={showGoodbye} onClose={() => { setShowGoodbye(false); navigate('/'); }} />
     </div>
   );
 }

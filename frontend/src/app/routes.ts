@@ -1,11 +1,13 @@
 import { createBrowserRouter } from 'react-router';
 import { Layout } from './components/layout/Layout';
 import { Landing } from './pages/Landing';
+import { VedEntry } from './pages/VedEntry';
 import { Chat } from './pages/Chat';
 import { Schemes } from './pages/Schemes';
 import { SchemeDetail } from './pages/SchemeDetail';
 import { Track } from './pages/Track';
 import { Profile } from './pages/Profile';
+import { AgriFormFill } from './pages/AgriFormFill';
 import { NotFound } from './pages/NotFound';
 import { AdminLayout } from './pages/admin/AdminLayout';
 import { Dashboard } from './pages/admin/Dashboard';
@@ -14,17 +16,20 @@ import { AdminSchemes } from './pages/admin/AdminSchemes';
 import { Sessions } from './pages/admin/Sessions';
 import { AdminUsers } from './pages/admin/AdminUsers';
 
+// App routes configuration
 export const router = createBrowserRouter([
   {
     path: '/',
     Component: Layout,
     children: [
       { index: true, Component: Landing },
+      { path: 'ved', Component: VedEntry },
       { path: 'chat', Component: Chat },
       { path: 'schemes', Component: Schemes },
       { path: 'schemes/:schemeSlug', Component: SchemeDetail },
       { path: 'track', Component: Track },
       { path: 'profile', Component: Profile },
+      { path: 'form-fill', Component: AgriFormFill },
       {
         path: 'admin',
         Component: AdminLayout,

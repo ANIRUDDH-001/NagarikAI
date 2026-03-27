@@ -2,60 +2,30 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useLang } from '../../context/LanguageContext';
 import { useApp } from '../../context/AppContext';
-import { Globe, LogIn, User, LogOut, Shield } from 'lucide-react';
+import { LogIn, User, LogOut, Shield } from 'lucide-react';
+import { JanSaathiLogo } from '../JanSaathiLogo';
+import { LanguageSelector } from '../LanguageSelector';
+import { motion } from 'motion/react';
+import { buttonPress } from '../../utils/animations';
 
 export function TopNav() {
-  const { lang, setLang, t } = useLang();
+  const { t } = useLang();
   const { isLoggedIn, isAdmin, user, login, logout } = useApp();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          {/* Enhanced Logo: Navy Blue primary with Saffron/Green gradient accents */}
-          <div className="relative">
-            {/* Gradient shadow/glow */}
-            <div 
-              className="absolute inset-0 rounded-full blur-md opacity-60"
-              style={{ 
-                background: 'linear-gradient(135deg, rgba(255, 153, 51, 0.6) 0%, rgba(19, 136, 8, 0.6) 100%)'
-              }}
-            />
-            {/* Main logo circle - Navy Blue */}
-            <div 
-              className="relative w-9 h-9 rounded-full flex items-center justify-center shadow-lg"
-              style={{ 
-                background: 'linear-gradient(135deg, #000080 0%, #00006b 100%)',
-                boxShadow: '0 2px 8px rgba(0, 0, 128, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.3)'
-              }}
-            >
-              {/* Inner ring with gradient */}
-              <div 
-                className="w-5 h-5 rounded-full flex items-center justify-center"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255, 153, 51, 0.2) 0%, rgba(19, 136, 8, 0.2) 100%)',
-                  border: '2px solid rgba(255, 255, 255, 0.9)'
-                }}
-              >
-                {/* Center dot */}
-                <div 
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{ 
-                    background: 'linear-gradient(135deg, #FF9933 0%, #138808 100%)'
-                  }}
-                />
-              </div>
-            </div>
-          </div>
+        <Link to="/" className="flex items-center gap-3">
+          <JanSaathiLogo size="sm" />
           <div>
             <span 
               className="text-[#000080]" 
               style={{ 
                 fontSize: '1.125rem', 
                 fontWeight: 700,
-                fontFamily: 'Lora, serif',
+                fontFamily: 'Inter, sans-serif',
                 textShadow: '0 1px 2px rgba(255, 153, 51, 0.1)'
               }}
             >
@@ -66,7 +36,7 @@ export function TopNav() {
               style={{ 
                 fontSize: '0.7rem', 
                 lineHeight: 1.2,
-                fontFamily: 'Manrope, sans-serif'
+                fontFamily: 'Inter, sans-serif'
               }}
             >
               {t('nav.subtext')}
@@ -75,27 +45,23 @@ export function TopNav() {
         </Link>
 
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => setLang(lang === 'en' ? 'hi' : 'en')}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-border hover:bg-muted transition-colors"
-            style={{ fontSize: '0.875rem' }}
-          >
-            <Globe className="w-4 h-4" />
-            {lang === 'en' ? 'हिंदी' : 'English'}
-          </button>
+          {/* Language Selector */}
+          <LanguageSelector />
 
           {!isLoggedIn ? (
-            <button
+            <motion.button
+              whileTap={buttonPress}
               onClick={login}
               className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition"
               style={{ fontSize: '0.875rem' }}
             >
               <LogIn className="w-4 h-4" />
               {t('nav.login')}
-            </button>
+            </motion.button>
           ) : (
             <div className="relative">
-              <button
+              <motion.button
+                whileTap={buttonPress}
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border hover:bg-muted"
               >
@@ -103,22 +69,41 @@ export function TopNav() {
                   {user?.name?.charAt(0) || 'U'}
                 </div>
                 {isAdmin && <span className="px-2 py-0.5 rounded-full bg-[#000080] text-white" style={{ fontSize: '0.65rem', fontWeight: 500 }}>{t('nav.admin')}</span>}
-              </button>
+              </motion.button>
               {menuOpen && (
-                <div className="absolute right-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-border py-1 z-50">
-                  <button onClick={() => { navigate('/profile'); setMenuOpen(false); }} className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2" style={{ fontSize: '0.875rem' }}>
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="absolute right-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-border py-1 z-50"
+                >
+                  <motion.button 
+                    whileTap={buttonPress}
+                    onClick={() => { navigate('/profile'); setMenuOpen(false); }} 
+                    className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2" 
+                    style={{ fontSize: '0.875rem' }}
+                  >
                     <User className="w-4 h-4" /> {t('nav.profile')}
-                  </button>
+                  </motion.button>
                   {isAdmin && (
-                    <button onClick={() => { navigate('/admin/dashboard'); setMenuOpen(false); }} className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2" style={{ fontSize: '0.875rem' }}>
+                    <motion.button 
+                      whileTap={buttonPress}
+                      onClick={() => { navigate('/admin/dashboard'); setMenuOpen(false); }} 
+                      className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2" 
+                      style={{ fontSize: '0.875rem' }}
+                    >
                       <Shield className="w-4 h-4" /> {t('nav.admin')}
-                    </button>
+                    </motion.button>
                   )}
                   <hr className="my-1 border-border" />
-                  <button onClick={() => { logout(); setMenuOpen(false); }} className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2 text-destructive" style={{ fontSize: '0.875rem' }}>
+                  <motion.button 
+                    whileTap={buttonPress}
+                    onClick={() => { logout(); setMenuOpen(false); }} 
+                    className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2 text-destructive" 
+                    style={{ fontSize: '0.875rem' }}
+                  >
                     <LogOut className="w-4 h-4" /> {t('nav.logout')}
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               )}
             </div>
           )}

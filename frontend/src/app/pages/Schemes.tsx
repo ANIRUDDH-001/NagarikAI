@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router';
 import { useLang } from '../context/LanguageContext';
 import { useApp } from '../context/AppContext';
@@ -13,7 +13,7 @@ const domainColors: Record<string, string> = {
   'Social welfare': '#dc2626',
 };
 
-function getMatchReasons(scheme: any, profile: any, lang: 'en' | 'hi') {
+function getMatchReasons(scheme: any, profile: any, lang: string) {
   const reasons = [];
   
   // Enhanced match transparency with actual data
@@ -201,16 +201,31 @@ export function Schemes() {
                         {lang === 'hi' ? scheme.ministryHi : scheme.ministry}
                       </p>
                     </div>
-                    <span 
-                      className="px-3 py-1.5 rounded-full text-white shrink-0 shadow-sm" 
-                      style={{ 
-                        backgroundColor: domainColors[scheme.domain] || '#666', 
-                        fontSize: '0.75rem', 
-                        fontWeight: 600 
-                      }}
-                    >
-                      {scheme.domain}
-                    </span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      {/* State-specific badge */}
+                      <span
+                        className="px-2 py-0.5 rounded-full"
+                        style={{
+                          fontSize: '0.65rem',
+                          fontWeight: 600,
+                          fontFamily: 'Manrope, sans-serif',
+                          backgroundColor: scheme.applyUrl ? 'rgba(19,136,8,0.1)' : 'rgba(0,0,128,0.1)',
+                          color: scheme.applyUrl ? '#138808' : '#000080',
+                        }}
+                      >
+                        {scheme.applyUrl ? (lang === 'hi' ? 'राष्ट्रीय' : 'National') : (lang === 'hi' ? 'राज्य' : 'State')}
+                      </span>
+                      <span 
+                        className="px-3 py-1.5 rounded-full text-white shadow-sm" 
+                        style={{ 
+                          backgroundColor: domainColors[scheme.domain] || '#666', 
+                          fontSize: '0.75rem', 
+                          fontWeight: 600 
+                        }}
+                      >
+                        {scheme.domain}
+                      </span>
+                    </div>
                   </div>
 
                   {matchReasons.length > 0 && (
@@ -272,6 +287,22 @@ export function Schemes() {
                       {t('scheme.ask')}
                     </button>
                   </div>
+
+                  {/* Form Bharen CTA for eligible schemes */}
+                  {(scheme.slug === 'pm-kisan' || scheme.slug === 'mgnrega') && (
+                    <button
+                      onClick={() => navigate('/form-fill')}
+                      className="w-full mt-3 py-3 rounded-xl text-white flex items-center justify-center gap-2 hover:shadow-lg transition-all"
+                      style={{
+                        background: 'linear-gradient(90deg, #FF9933, #e8882d)',
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
+                        fontFamily: 'Manrope, sans-serif',
+                      }}
+                    >
+                      {lang === 'hi' ? 'Form भरें' : 'Fill Form'} →
+                    </button>
+                  )}
                 </div>
 
                 <AnimatePresence>

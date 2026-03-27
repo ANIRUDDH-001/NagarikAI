@@ -5,6 +5,10 @@ import { Mic, Send, MessageCircle, Search, HandHelping, Sparkles, User, MapPin, 
 import { motion, AnimatePresence } from 'motion/react';
 import { VoiceWaveform } from '../components/VoiceWaveform';
 import { LiveBenefitTicker } from '../components/LiveBenefitTicker';
+import { VoiceButton } from '../components/VoiceButton';
+import { AnimatedButton } from '../components/AnimatedButton';
+import { AnimatedCard } from '../components/AnimatedCard';
+import { inputFocus, buttonPress } from '../utils/animations';
 
 export function Landing() {
   const { t, lang } = useLang();
@@ -12,17 +16,18 @@ export function Landing() {
   const [input, setInput] = useState('');
   const [voiceState, setVoiceState] = useState<'default' | 'listening' | 'processing'>('default');
   const [ghostProfile, setGhostProfile] = useState<{ state?: string; occupation?: string; age?: string } | null>(null);
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleSubmit = (text?: string, profileData?: any) => {
     const msg = text || input;
     if (!msg.trim()) return;
     
-    // Animate ghost profile if profile data exists
+    // "Data-Fly" transition - Animate ghost profile if profile data exists
     if (profileData) {
       setGhostProfile(profileData);
       setTimeout(() => {
         navigate('/chat', { state: { initialMessage: msg } });
-      }, 800);
+      }, 1200); // Give time for the animation to complete
     } else {
       navigate('/chat', { state: { initialMessage: msg } });
     }
@@ -105,44 +110,18 @@ export function Landing() {
             transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
             className="mb-12 mt-12"
           >
-            <div className="relative inline-block">
-              {voiceState !== 'default' && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="absolute w-24 h-24 rounded-full bg-[#FF9933]/20 animate-ping" />
-                  <div className="absolute w-32 h-32 rounded-full bg-[#FF9933]/10 animate-pulse" />
-                  <div className="absolute w-40 h-40 rounded-full bg-[#FF9933]/5 animate-pulse" style={{ animationDelay: '0.5s' }} />
-                </div>
-              )}
-              
-              <button
-                onClick={handleVoice}
-                className={`relative w-24 h-24 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 ${
-                  voiceState === 'listening' 
-                    ? 'bg-gradient-to-br from-red-500 to-red-600 scale-110' 
-                    : voiceState === 'processing' 
-                    ? 'bg-gradient-to-br from-[#FF9933] to-[#e8882d]' 
-                    : 'bg-gradient-to-br from-[#FF9933] to-[#e8882d] hover:scale-105 hover:shadow-[#FF9933]/50'
-                }`}
-                style={{ 
-                  boxShadow: voiceState !== 'default' 
-                    ? '0 20px 60px rgba(255, 153, 51, 0.4)' 
-                    : '0 10px 40px rgba(255, 153, 51, 0.3)'
-                }}
-              >
-                <Mic className="w-10 h-10 text-white" />
-              </button>
-            </div>
+            <VoiceButton state={voiceState} size="lg" onClick={handleVoice} />
 
             <div className="mt-6">
               {voiceState === 'listening' ? (
                 <div className="space-y-2">
                   <VoiceWaveform />
-                  <p className="text-[#FF9933]" style={{ fontSize: '0.95rem', fontWeight: 600 }}>
+                  <p className="text-[#FF9933]" style={{ fontSize: '0.95rem', fontWeight: 600, fontFamily: 'Manrope, sans-serif' }}>
                     {t('voice.listening')}
                   </p>
                 </div>
               ) : (
-                <p className="text-muted-foreground" style={{ fontSize: '0.95rem' }}>
+                <p className="text-muted-foreground" style={{ fontSize: '0.95rem', fontFamily: 'Manrope, sans-serif' }}>
                   {voiceState === 'default' ? t('voice.tap') : t('voice.processing')}
                 </p>
               )}
@@ -155,8 +134,9 @@ export function Landing() {
             transition={{ delay: 0.3 }} 
             className="max-w-2xl mx-auto mb-6"
           >
-            <div 
-              className="flex rounded-2xl border-2 border-border/50 bg-white/80 backdrop-blur-sm shadow-lg overflow-hidden focus-within:border-[#FF9933] transition-all"
+            <motion.div 
+              className="flex rounded-2xl border-2 overflow-hidden shadow-lg bg-white/80 backdrop-blur-sm"
+              animate={isFocused ? inputFocus : { borderColor: 'var(--border)' }}
               style={{ backdropFilter: 'blur(10px)' }}
             >
               <input
@@ -166,16 +146,19 @@ export function Landing() {
                 placeholder={t('input.placeholder')}
                 className="flex-1 px-6 py-4 bg-transparent outline-none"
                 style={{ fontSize: '1rem' }}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
               />
-              <button
+              <motion.button
+                whileTap={buttonPress}
                 onClick={() => handleSubmit()}
                 className="px-8 py-4 bg-gradient-to-r from-[#138808] to-[#0f6d06] text-white hover:from-[#0f6d06] hover:to-[#0a5004] transition-all flex items-center gap-2"
                 style={{ fontWeight: 600, fontSize: '1rem' }}
               >
                 <Send className="w-5 h-5" />
                 <span className="hidden sm:inline">{t('input.submit')}</span>
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           </motion.div>
 
           <motion.div 
@@ -275,6 +258,25 @@ export function Landing() {
 
       <section className="bg-gradient-to-r from-[#000080] via-[#000060] to-[#000080] text-white py-6">
         <LiveBenefitTicker />
+      </section>
+
+      {/* Ved Entry CTA */}
+      <section className="py-8 text-center">
+        <motion.button
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          onClick={() => navigate('/ved')}
+          className="px-8 py-4 rounded-full text-white shadow-xl"
+          style={{
+            background: 'linear-gradient(135deg, #0A0A0A 0%, #1a1a2e 100%)',
+            fontWeight: 600,
+            fontSize: '1rem',
+            fontFamily: 'Manrope, sans-serif',
+            border: '1px solid rgba(255,153,51,0.3)',
+          }}
+        >
+          🎙️ {lang === 'hi' ? 'वेद से बात करें (Voice Mode)' : 'Talk to Ved (Voice Mode)'}
+        </motion.button>
       </section>
 
       <section className="py-20 bg-gradient-to-b from-white to-background">

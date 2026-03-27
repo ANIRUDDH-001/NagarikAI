@@ -2,6 +2,7 @@ import React from 'react';
 import { ChevronRight, TrendingUp } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLang } from '../context/LanguageContext';
+import { RupeeDisplay } from './RupeeDisplay';
 
 interface GapCardProps {
   gapValue: number;
@@ -10,7 +11,7 @@ interface GapCardProps {
 }
 
 export function GapCard({ gapValue, schemeCount, onViewSchemes }: GapCardProps) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const percentage = Math.min((gapValue / 500000) * 100, 100);
 
   return (
@@ -51,19 +52,14 @@ export function GapCard({ gapValue, schemeCount, onViewSchemes }: GapCardProps) 
 
         <div className="mb-6">
           <div className="flex items-baseline gap-2 mb-2">
-            <span 
-              className="text-[#138808]"
-              style={{ 
-                fontSize: 'clamp(2rem, 5vw, 2.5rem)', 
-                fontWeight: 800,
-                fontFamily: 'Lora, serif'
-              }}
-            >
-              ₹{gapValue.toLocaleString('en-IN')}
-            </span>
-            <span className="text-muted-foreground" style={{ fontSize: '0.9rem' }}>
-              {t('gap.per_year')}
-            </span>
+            <RupeeDisplay 
+              value={gapValue} 
+              size="xl" 
+              color="#138808" 
+              showPerYear 
+              animated 
+              lang={lang}
+            />
           </div>
 
           <div className="relative w-full h-3 bg-white/50 rounded-full overflow-hidden mb-2">
@@ -80,10 +76,33 @@ export function GapCard({ gapValue, schemeCount, onViewSchemes }: GapCardProps) 
 
           <p 
             className="text-muted-foreground" 
-            style={{ fontSize: '0.8rem' }}
+            style={{ fontSize: '0.8rem', fontFamily: 'Manrope, sans-serif' }}
           >
             {t('gap.across', { scheme_count: schemeCount })}
           </p>
+        </div>
+
+        {/* Scheme pills */}
+        <div className="flex gap-2 overflow-x-auto pb-2 mb-4 -mx-1 px-1">
+          {[
+            { name: 'PM-KISAN', amount: '₹6,000' },
+            { name: 'KCC', amount: '₹3L credit' },
+            { name: 'PM-KMY', amount: '₹3,000/माह' },
+          ].map((pill, i) => (
+            <span
+              key={i}
+              className="shrink-0 px-3 py-1.5 rounded-full text-white"
+              style={{
+                backgroundColor: '#FF9933',
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                fontFamily: 'Manrope, sans-serif',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {pill.name} {pill.amount}
+            </span>
+          ))}
         </div>
 
         <motion.button
@@ -91,7 +110,7 @@ export function GapCard({ gapValue, schemeCount, onViewSchemes }: GapCardProps) 
           whileTap={{ scale: 0.98 }}
           onClick={onViewSchemes}
           className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#138808] to-[#0f6d06] text-white flex items-center justify-center gap-2 hover:shadow-lg transition-all"
-          style={{ fontWeight: 600, fontSize: '1rem' }}
+          style={{ fontWeight: 600, fontSize: '1rem', fontFamily: 'Manrope, sans-serif' }}
         >
           {t('gap.cta')} 
           <ChevronRight className="w-5 h-5" />

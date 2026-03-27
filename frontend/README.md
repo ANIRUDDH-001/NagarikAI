@@ -1,7 +1,7 @@
 
-  # Break down task components
+  # JanSaathi
 
-  This is a code bundle for Break down task components. The original project is available at https://www.figma.com/design/e81KTLYdC8g4099wNEoDJg/Break-down-task-components.
+  This is a code bundle for JanSaathi. The original project is available at https://www.figma.com/design/e81KTLYdC8g4099wNEoDJg/JanSaathi.
 
   ## Running the code
 
